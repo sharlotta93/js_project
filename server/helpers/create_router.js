@@ -28,6 +28,20 @@ const createRouter = function ( collection ) {
       });
   });
 
+    router.post('/', (req, res) => {
+      const newItem = req.body;
+      collection
+        .insertOne(newItem)
+        .then( ()=> collection.find().toArray())
+        .then( (docs) => res.json(docs) )
+        .catch((err) => {
+          console.error(err);
+          res.status(500);
+          res.json({status: 500, error: err});
+        });
+    });
+
+
 
 
 
