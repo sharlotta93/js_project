@@ -10,9 +10,11 @@ QuestionView.prototype.render = function (item) {
 
   const genre = this.createElement("h3", item.genre);
   const question = this.createElement("p", item.question);
+  const form = this.createInputForm();
 
   questionContainer.appendChild(genre);
   questionContainer.appendChild(question);
+  questionContainer.appendChild(form;
 
   this.container.appendChild(questionContainer);
 
@@ -45,6 +47,21 @@ QuestionView.prototype.hintButton = function (button, item) {
     PubSub.publish("QuestionView:click-hint", evt.target.value)
   })
   return button
+};
+
+QuestionView.prototype.createInputForm = function () {
+  const form = document.createElement("form");
+  form.setAttribute('method',"post");
+
+  const input = document.createElement("input");
+  input.setAttribute('type',"text");
+
+  const submit = document.createElement("input");
+  submit.setAttribute('type',"submit");
+  sumbit.setAttribute('value',"Submit");
+
+  form.appendChild(input);
+  form.appendChild(submit);
 };
 
 
