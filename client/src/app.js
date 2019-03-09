@@ -1,6 +1,5 @@
 const GameLogic = require('./models/game_logic.js');
 const GameView = require("./views/game.js");
-//const QuestionView = require("./views/question.js");
 
 
 document.addEventListener('DOMContentLoaded', () => {
