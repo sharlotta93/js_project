@@ -17,7 +17,6 @@ GameView.prototype.renderQuestion = function (question) {
   this.container.innerHTML = "";
   const newQuestion = new QuestionView(this.container);
   newQuestion.render(question);
-
 }
 
 GameView.prototype.createFeatures = function (item) {

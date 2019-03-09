@@ -1,3 +1,15 @@
 .hidden {
    display: none;
 }
+
+#question {
+  background-color: blue;
+  width: 50vw;
+  height: 50vh;
+}
+
+#hint {
+  background-color: green;
+  width: 50vw;
+  height: 20vh;
+}

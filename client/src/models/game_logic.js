@@ -14,17 +14,15 @@ GameLogic.prototype.prepareQuestions = function () {
     })
       .catch((err) => console.error(err));
 };
+
 GameLogic.prototype.initialLoad = (questions) => {
   const startButton = document.querySelector('#start-game');
   startButton.addEventListener('click', () => {
     startButton.classList.add('hidden');
-    PubSub.publish('Game:data-ready', questions[0]);
+    PubSub.publish('Game:data-ready', questions[1]);
   });
 };
 
-// GameLogic.prototype.onStartButtonClick = () => {
-//
-// };
 
 
 module.exports = GameLogic;
