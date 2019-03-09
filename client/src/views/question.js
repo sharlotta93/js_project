@@ -14,7 +14,7 @@ QuestionView.prototype.render = function (item) {
 
   questionContainer.appendChild(genre);
   questionContainer.appendChild(question);
-  questionContainer.appendChild(form;
+  //questionContainer.appendChild(form);
 
   this.container.appendChild(questionContainer);
 
@@ -28,9 +28,10 @@ QuestionView.prototype.createHintBox = function (item) {
   const hintText = this.createElement("p", item.hint);
   const hintButton = this.createElement("button", "HINT");
 
-  this.createButton(hintButton, item);
+  this.hintButton(hintButton, item);
 
-  questionContainer.appendChild(hintbutton);
+  hintContainer.appendChild(hintButton);
+  hintContainer.appendChild(hintText);
 
   this.container.appendChild(hintContainer);
 };
@@ -58,7 +59,6 @@ QuestionView.prototype.createInputForm = function () {
 
   const submit = document.createElement("input");
   submit.setAttribute('type',"submit");
-  sumbit.setAttribute('value',"Submit");
 
   form.appendChild(input);
   form.appendChild(submit);

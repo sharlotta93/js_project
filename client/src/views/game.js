@@ -7,9 +7,9 @@ const GameView = function (container) {
 }
 
 GameView.prototype.bindEvents = function () {
-  PubSub.subscribe("GameView:data-ready", (evt) => {
+  PubSub.subscribe("Game:data-ready", (evt) => {
     this.renderQuestion(evt.detail);
-    this.createFeatures();
+    this.createFeatures(evt.detail);
   })
 };
 
@@ -20,7 +20,7 @@ GameView.prototype.renderQuestion = function (question) {
 
 }
 
-GameView.prototype.createFeatures = function () {
+GameView.prototype.createFeatures = function (item) {
   const gameContainer = document.createElement("div");
   gameContainer.id = 'game';
 

@@ -7,27 +7,24 @@ const GameLogic = function () {
 }
 
 GameLogic.prototype.prepareQuestions = function () {
-  this.request.get()
-    //get all questions from database
-    .then((questions) => {
-      this.questions = questions;
-      this.initialLoad(questions);
-      //assign data received to the array
+  this.request.get() //get all questions from database
+      .then((questions) => {
+        this.questions = questions;
+        this.initialLoad(questions); //assign data received to the array
     })
-    .catch((err) => console.error(err));
+      .catch((err) => console.error(err));
 };
 GameLogic.prototype.initialLoad = (questions) => {
   const startButton = document.querySelector('#start-game');
-  console.log(questions);
-  startButton.addEventListener('click', this.onStartButtonClick);
-
-};
-
-GameLogic.prototype.onStartButtonClick = () => {
+  startButton.addEventListener('click', () => {
     startButton.classList.add('hidden');
-    PubSub.publish('Game:initial-question', this.questions[0])
-
+    PubSub.publish('Game:data-ready', questions[0]);
+  });
 };
+
+// GameLogic.prototype.onStartButtonClick = () => {
+//
+// };
 
 
 module.exports = GameLogic;
