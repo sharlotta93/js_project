@@ -12,12 +12,9 @@ GameLogic.prototype.bindEvents = function () {
     this.questions.forEach((question) => {
       if (id === question._id) {
         const hint = question.hint;
-
-    }})
-
-    hint.lastElementChild.classList.add('show');
-    console.log(hint);
-    PubSub.publish('Game:data-ready', this.questions[1]);
+      }
+    })
+    hint.lastElementChild.classList.toggle('hidden');
   })
 }
 
