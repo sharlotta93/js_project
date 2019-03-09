@@ -10,11 +10,11 @@ QuestionView.prototype.render = function (item) {
 
   const genre = this.createElement("h3", item.genre);
   const question = this.createElement("p", item.question);
-  //const form = this.createInputForm();
+  const answer = this.createInputForm();
 
   questionContainer.appendChild(genre);
   questionContainer.appendChild(question);
-  //questionContainer.appendChild(form);
+  //questionContainer.appendChild(answer);
 
   this.container.appendChild(questionContainer);
 
@@ -52,19 +52,24 @@ QuestionView.prototype.hintButton = function (button, item) {
   return button
 };
 
-// QuestionView.prototype.createInputForm = function () {
-//   const form = document.createElement("form");
-//   form.setAttribute('method',"post");
-//
-//   const input = document.createElement("input");
-//   input.setAttribute('type',"text");
-//
-//   const submit = document.createElement("input");
-//   submit.setAttribute('type',"submit");
-//
-//   form.appendChild(input);
-//   form.appendChild(submit);
-// };
+QuestionView.prototype.createInputForm = function () {
+  const answerContainer = document.createElement("div");
+  answerContainer.id = 'answerForm';
+
+  const form = document.createElement("form");
+  form.setAttribute('method',"post");
+
+  const input = document.createElement("input");
+  input.setAttribute('type',"text");
+
+  const submit = document.createElement("input");
+  submit.setAttribute('type',"submit");
+
+  form.appendChild(input);
+  form.appendChild(submit);
+
+  answerContainer.appendChild(form);
+};
 
 
 module.exports = QuestionView;
