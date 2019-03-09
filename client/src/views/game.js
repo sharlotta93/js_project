@@ -50,7 +50,7 @@ GameView.prototype.createButton = function (button, item, channel) {
   return button
 };
 
-QuestionView.prototype.createElement = function (element, text) {
+GameView.prototype.createElement = function (element, text) {
   const newElement = document.createElement(element)
   newElement.textContent = text;
   return newElement
