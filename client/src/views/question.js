@@ -14,11 +14,12 @@ QuestionView.prototype.render = function (item) {
 
   questionContainer.appendChild(genre);
   questionContainer.appendChild(question);
-  //questionContainer.appendChild(answer);
+  questionContainer.appendChild(answer);
 
   this.container.appendChild(questionContainer);
 
   this.createHintBox(item);
+
 };
 
 QuestionView.prototype.createElement = function (element, text) {
@@ -53,23 +54,20 @@ QuestionView.prototype.hintButton = function (button, item) {
 };
 
 QuestionView.prototype.createInputForm = function () {
-  const answerContainer = document.createElement("div");
-  answerContainer.id = 'answerForm';
+    const guessForm = document.createElement('form');
 
-  const form = document.createElement("form");
-  form.setAttribute('method',"post");
+    const guessInput = document.createElement('input');
+    guessInput.type = 'number';
+    guessInput.id = 'answer-input';
 
-  const input = document.createElement("input");
-  input.setAttribute('type',"text");
+    const submitButton = document.createElement('button');
+    submitButton.type = 'submit';
+    submitButton.textContent = 'Guess';
 
-  const submit = document.createElement("input");
-  submit.setAttribute('type',"submit");
+    guessForm.appendChild(guessInput);
+    guessForm.appendChild(submitButton);
 
-  form.appendChild(input);
-  form.appendChild(submit);
-
-  answerContainer.appendChild(form);
+    return guessForm;
 };
-
 
 module.exports = QuestionView;
