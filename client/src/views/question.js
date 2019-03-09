@@ -32,12 +32,14 @@ QuestionView.prototype.createHintBox = function (item) {
   hintContainer.id = 'hint';
 
   const hintText = this.createElement("p", item.hint);
+  hintText.classList.add('hidden');
   const hintButton = this.createElement("button", "HINT");
 
   this.hintButton(hintButton, item);
 
   hintContainer.appendChild(hintButton);
   hintContainer.appendChild(hintText);
+
 
   this.container.appendChild(hintContainer);
 };
@@ -50,19 +52,19 @@ QuestionView.prototype.hintButton = function (button, item) {
   return button
 };
 
-QuestionView.prototype.createInputForm = function () {
-  const form = document.createElement("form");
-  form.setAttribute('method',"post");
-
-  const input = document.createElement("input");
-  input.setAttribute('type',"text");
-
-  const submit = document.createElement("input");
-  submit.setAttribute('type',"submit");
-
-  form.appendChild(input);
-  form.appendChild(submit);
-};
+// QuestionView.prototype.createInputForm = function () {
+//   const form = document.createElement("form");
+//   form.setAttribute('method',"post");
+//
+//   const input = document.createElement("input");
+//   input.setAttribute('type',"text");
+//
+//   const submit = document.createElement("input");
+//   submit.setAttribute('type',"submit");
+//
+//   form.appendChild(input);
+//   form.appendChild(submit);
+// };
 
 
 module.exports = QuestionView;

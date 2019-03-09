@@ -6,6 +6,21 @@ const GameLogic = function () {
   this.request = new RequestHelper('http://localhost:3000/api/game');
 }
 
+GameLogic.prototype.bindEvents = function () {
+  PubSub.subscribe("QuestionView:click-hint", (evt) => {
+    const id = evt.detail;
+    this.questions.forEach((question) => {
+      if (id === question._id) {
+        const hint = question.hint;
+
+    }})
+
+    hint.lastElementChild.classList.add('show');
+    console.log(hint);
+    PubSub.publish('Game:data-ready', this.questions[1]);
+  })
+}
+
 GameLogic.prototype.prepareQuestions = function () {
   this.request.get() //get all questions from database
       .then((questions) => {
@@ -22,7 +37,6 @@ GameLogic.prototype.initialLoad = (questions) => {
     PubSub.publish('Game:data-ready', questions[1]);
   });
 };
-
 
 
 module.exports = GameLogic;
