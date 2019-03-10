@@ -36,10 +36,14 @@ GameLogic.prototype.displayQuestion = (questions, index) => {
 };
 
 GameLogic.prototype.dealWithAnswers = function () {
+  this.dealWithNumberAnswers()
+};
+
+GameLogic.prototype.dealWithNumberAnswers = function () {
   PubSub.subscribe("QuestionView:click-guess", (evt) => {
     const answer = evt.detail;
-    if (evt.detail == this.questions[1].answer) { //checking the input answer against the db answer
-      window.alert("You're correct!"); //displays feedback to the user
+    if (answer.userAnswer == answer.answer) {
+      window.alert("You're correct!");
       PubSub.publish('Game:data-ready', this.questions[2]);
     } else {
       window.alert("try again!");

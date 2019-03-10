@@ -18,7 +18,15 @@ QuestionView.prototype.render = function (item) {
 
   answer.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    PubSub.publish("QuestionView:click-guess", evt.target["answer-input"].value); //getting the value from the input box
+    const answerObject = {
+      answerType: item.answer_type,
+      genre: item.genre,
+      question: item.question,
+      answer: item.answer,
+      hint: item.hint,
+      userAnswer: evt.target["answer-input"].value,
+    }
+    PubSub.publish("QuestionView:click-guess", answerObject); //getting the value from the input box
     evt.target.reset();
   });
 
