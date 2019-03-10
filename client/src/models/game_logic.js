@@ -38,7 +38,11 @@ GameLogic.prototype.initialLoad = (questions) => {
 GameLogic.prototype.dealWithAnswerQ1 = function () {
   PubSub.subscribe("QuestionView:click-guess", (evt) => {
     const answer = evt.detail;
-    console.log("the answer is", answer);
+    if (evt.detail == this.questions[1].answer) {
+      window.alert("You're correct!" + " press next question!");
+    } else {
+      window.alert("try again!");
+    }
   })
 };
 
