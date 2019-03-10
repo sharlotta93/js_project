@@ -44,11 +44,11 @@ GameLogic.prototype.dealWithNumberAnswers = function () {
     const answer = evt.detail;
     if (answer.userAnswer == answer.answer) {
       window.alert("You're correct!");
-      PubSub.publish('Game:data-ready', this.questions[2]);
     } else {
       window.alert("try again!");
       window.alert("check the hint if you like!");
     }
+  PubSub.publish('Game:data-ready', this.questions[2]);
   })
 };
 
