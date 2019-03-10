@@ -16,11 +16,10 @@ QuestionView.prototype.render = function (item) {
   questionContainer.appendChild(question);
   questionContainer.appendChild(answer);
 
-  answer.addEventListener('click', (evt) => {
+  answer.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    // PubSub.publish("QuestionView:click-guess", evt.detail);
-    // console.log(evt.inputbox.value);
-    //evt.target.reset();
+    PubSub.publish("QuestionView:click-guess", evt.target["answer-input"].value);
+    evt.target.reset();
   });
 
   this.container.appendChild(questionContainer);
@@ -66,11 +65,12 @@ QuestionView.prototype.createInputForm = function () {
 
     const guessInput = document.createElement('input');
     guessInput.type = 'number';
-    guessInput.name = 'inputbox';
+  //  guessInput.name = 'inputbox';
     guessInput.id = 'answer-input';
 
     const submitButton = document.createElement('button');
     submitButton.type = 'submit';
+    //submitButton.value = guessInput.value;
     submitButton.textContent = 'Guess';
 
     guessForm.appendChild(guessInput);
