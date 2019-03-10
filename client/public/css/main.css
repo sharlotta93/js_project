@@ -4,13 +4,13 @@
 }
 
 #question {
-  background-color: blue;
+  background-color: rgb(74, 226, 180);
   width: 50vw;
   height: 50vh;
 }
 
 #hint {
-  background-color: green;
+  background-color: rgb(57, 208, 86);
   width: 50vw;
   height: 20vh;
 }
