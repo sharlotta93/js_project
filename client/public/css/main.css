@@ -1,20 +1,20 @@
 .hidden {
-  display: none !important;
-  visibility: hidden !important;
+  display: none;
+  visibility: hidden;
 }
 
 #question {
-  background-color: blue;
+  background-color: rgb(81, 208, 208);
   width: 50vw;
   height: 50vh;
 }
 
 #hint {
-  background-color: green;
+  background-color: rgb(12, 218, 101);
   width: 50vw;
   height: 20vh;
 }
 
 .show {
-  display: block !important;
+  display: block;
 }

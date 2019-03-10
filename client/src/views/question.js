@@ -64,10 +64,16 @@ QuestionView.prototype.createInputForm = function () {
     submitButton.type = 'submit';
     submitButton.textContent = 'Guess';
 
+    submitButton.addEventListener('click', (evt) => {
+      evt.preventDefault();
+      PubSub.publish("QuestionView:click-guess", evt.target.value)
+    });
+
     guessForm.appendChild(guessInput);
     guessForm.appendChild(submitButton);
 
     return guessForm;
 };
+
 
 module.exports = QuestionView;
