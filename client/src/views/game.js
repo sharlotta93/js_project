@@ -27,10 +27,14 @@ GameView.prototype.createFeatures = function (item) {
   buttonLeft.id = 'leftButton';
   const buttonRight = this.createElement("button", "NEXT QUESTION");
   buttonRight.id = 'rightButton';
-  const deleteButton = this.createElement("button", "FINISH GAME");
-  deleteButton.id = 'deleteButton'
 
-  this.createButton(deleteButton, item, "GamenView:finish-game");
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = "FINISH GAME";
+  deleteButton.value = item._id;
+  deleteButton.addEventListener('click', (evt) => {
+    location.reload();
+  })
+
   this.createButton(buttonLeft, item, "GamenView:go-back-a-question");
   this.createButton(buttonRight, item, "GamenView:next-question");
 
