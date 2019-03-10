@@ -1,6 +1,6 @@
 .hidden {
-  display: none !important;
-  visibility: hidden !important;
+  display: none;
+  visibility: hidden;
 }
 
 #question {
@@ -16,5 +16,5 @@
 }
 
 .show {
-  display: block !important;
+  display: block;
 }
