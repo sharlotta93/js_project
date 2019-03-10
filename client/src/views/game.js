@@ -32,7 +32,7 @@ GameView.prototype.createFeatures = function (item) {
   deleteButton.textContent = "FINISH GAME";
   deleteButton.value = item._id;
   deleteButton.addEventListener('click', (evt) => {
-    location.reload();
+    location.reload(); //finish button refreshed the page
   })
 
   this.createButton(buttonLeft, item, "GamenView:go-back-a-question");

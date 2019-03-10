@@ -17,7 +17,7 @@ db.question.insertMany(
     },
     {
       genre: "Science",
-      auestion: "What is the temperature at which water boils?",
+      question: "What is the temperature at which water boils?",
       answer: 100,
       hint: "0 Celsius is the temperature at which water freezes. 5600 Celsius is the temperature of the Sun."
     }

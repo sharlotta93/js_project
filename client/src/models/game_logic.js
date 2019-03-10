@@ -10,11 +10,11 @@ GameLogic.prototype.bindEvents = function () {
   PubSub.subscribe("QuestionView:click-hint", (evt) => {
     const id = evt.detail;
     this.questions.forEach((question) => {
-      if (id === question._id) {
+      if (id === question._id) {  //getting the correct hint from the db
         const hint = question.hint;
       }
     })
-    hint.lastElementChild.classList.toggle('hidden');
+    hint.lastElementChild.classList.toggle('hidden'); //allows you to switch the hint on and off
   })
 }
 
@@ -22,26 +22,28 @@ GameLogic.prototype.prepareQuestions = function () {
   this.request.get() //get all questions from database
       .then((questions) => {
         this.questions = questions;
-        this.initialLoad(questions); //assign data received to the array
+        this.displayQuestion(questions, 1); //assign data received to the array
     })
       .catch((err) => console.error(err));
 };
 
-GameLogic.prototype.initialLoad = (questions) => {
+GameLogic.prototype.displayQuestion = (questions, index) => {
   const startButton = document.querySelector('#start-game');
   startButton.addEventListener('click', () => {
     startButton.classList.add('hidden');
-    PubSub.publish('Game:data-ready', questions[1]);
+    PubSub.publish('Game:data-ready', questions[index]);
   });
 };
 
-GameLogic.prototype.dealWithAnswerQ1 = function () {
+GameLogic.prototype.dealWithAnswers = function () {
   PubSub.subscribe("QuestionView:click-guess", (evt) => {
     const answer = evt.detail;
-    if (evt.detail == this.questions[1].answer) {
-      window.alert("You're correct!" + " press next question!");
+    if (evt.detail == this.questions[1].answer) { //checking the input answer against the db answer
+      window.alert("You're correct!"); //displays feedback to the user
+      PubSub.publish('Game:data-ready', this.questions[2]);
     } else {
       window.alert("try again!");
+      window.alert("check the hint if you like!");
     }
   })
 };

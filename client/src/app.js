@@ -11,5 +11,5 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('Loaded');
   gameLogic.prepareQuestions();
   gameLogic.bindEvents();
-  gameLogic.dealWithAnswerQ1();
+  gameLogic.dealWithAnswers();
 })

@@ -18,7 +18,7 @@ QuestionView.prototype.render = function (item) {
 
   answer.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    PubSub.publish("QuestionView:click-guess", evt.target["answer-input"].value);
+    PubSub.publish("QuestionView:click-guess", evt.target["answer-input"].value); //getting the value from the input box
     evt.target.reset();
   });
 
@@ -47,7 +47,6 @@ QuestionView.prototype.createHintBox = function (item) {
   hintContainer.appendChild(hintButton);
   hintContainer.appendChild(hintText);
 
-
   this.container.appendChild(hintContainer);
 };
 
@@ -65,12 +64,10 @@ QuestionView.prototype.createInputForm = function () {
 
     const guessInput = document.createElement('input');
     guessInput.type = 'number';
-  //  guessInput.name = 'inputbox';
     guessInput.id = 'answer-input';
 
     const submitButton = document.createElement('button');
     submitButton.type = 'submit';
-    //submitButton.value = guessInput.value;
     submitButton.textContent = 'Guess';
 
     guessForm.appendChild(guessInput);
@@ -78,8 +75,5 @@ QuestionView.prototype.createInputForm = function () {
 
     return guessForm;
 };
-
-
-
 
 module.exports = QuestionView;
