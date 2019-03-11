@@ -20,6 +20,7 @@ QuestionView.prototype.render = function (question) {
   questionContainer.appendChild(answer);
 
   this.publishAnswer(answer, question);
+  console.log(answer.name)
 
   this.container.appendChild(questionContainer);
 
@@ -27,6 +28,7 @@ QuestionView.prototype.render = function (question) {
 };
 
 QuestionView.prototype.publishAnswer = function (answer, item) {
+  if (answer.name === "answer_form") {
   answer.addEventListener('submit', (evt) => {
     evt.preventDefault();
     const answerObject = {
@@ -39,8 +41,13 @@ QuestionView.prototype.publishAnswer = function (answer, item) {
     }
     PubSub.publish("QuestionView:click-guess", answerObject); //getting the value from the input box
     evt.target.reset();
-  });
-};
+  })
+}
+// else if
+// {
+//   console.log("hi!");
+// }
+}
 
 QuestionView.prototype.createElement = function (element, text) {
   const newElement = document.createElement(element)
