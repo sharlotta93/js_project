@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const gameLogic = new GameLogic();
   console.log('Loaded');
-  gameLogic.prepareQuestions();
+  gameLogic.prepareQuestion();
   gameLogic.bindEvents();
   gameLogic.dealWithAnswers();
 })

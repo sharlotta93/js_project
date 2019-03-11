@@ -2,6 +2,7 @@ const RequestHelper = require('../helpers/request_helper.js');
 const PubSub = require('../helpers/pub_sub.js');
 
 const GameLogic = function () {
+  this.currentQuestionIndex = 1;// temp hack
   this.questions = [];
   this.request = new RequestHelper('http://localhost:3000/api/game');
 }
@@ -18,11 +19,11 @@ GameLogic.prototype.bindEvents = function () {
   })
 }
 
-GameLogic.prototype.prepareQuestions = function () {
+GameLogic.prototype.prepareQuestion = function () {
   this.request.get() //get all questions from database
       .then((questions) => {
         this.questions = questions;
-        this.displayQuestion(questions, 1); //assign data received to the array
+        this.displayQuestion(questions, this.currentQuestionIndex); //assign data received to the array
     })
       .catch((err) => console.error(err));
 };
@@ -44,11 +45,13 @@ GameLogic.prototype.dealWithNumberAnswers = function () {
     const answer = evt.detail;
     if (answer.userAnswer == answer.answer) {
       window.alert("You're correct!");
+      this.currentQuestionIndex++
+      PubSub.publish('Game:question-index', this.currentQuestionIndex)
+      PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
     } else {
       window.alert("try again!");
       window.alert("check the hint if you like!");
     }
-  PubSub.publish('Game:data-ready', this.questions[2]);
   })
 };
 

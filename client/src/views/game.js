@@ -35,8 +35,8 @@ GameView.prototype.createFeatures = function (item) {
     location.reload(); //finish button refreshes the page
   })
 
-  this.createButton(buttonLeft, item, "GamenView:go-back-a-question");
-  this.createButton(buttonRight, item, "GamenView:next-question");
+  this.createButton(buttonLeft, item, "GameView:go-back-a-question");
+  this.createButton(buttonRight, item, "GameView:next-question");
 
   gameContainer.appendChild(deleteButton);
   gameContainer.appendChild(buttonLeft);
