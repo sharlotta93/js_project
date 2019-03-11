@@ -48,7 +48,17 @@ db.question.insertMany(
       choice2: "Digestion",
       choice3: "Excretion",
       hint: "The food you eat is first digested and later excreted."
-    }
+    },
+    {
+      answerType: "multipleChoice",
+      genre: "Science",
+      question: "Which part of human body has the most bones?",
+      answer: "Hand",
+      choice1: "Foot",
+      choice2: "Spine",
+      choice3: "Skull",
+      hint: "Skull has 22 bones, the least of the four."
+    },
   ]
 );
 
