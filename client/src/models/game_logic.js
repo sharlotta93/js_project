@@ -17,17 +17,21 @@ GameLogic.prototype.bindEvents = function () {
     })
     hint.lastElementChild.classList.toggle('hidden'); //allows you to switch the hint on and off
   })
-  this.nextQuestion();
-  this.previousQuestion();
+  PubSub.subscribe("GameView:next-question", (evt) => {
+    this.nextQuestion();
+  })
+  PubSub.subscribe("GameView:previous-question", (evt) => {
+    this.previousQuestion();
+  })
 }
 
 GameLogic.prototype.prepareQuestion = function () {
   this.request.get() //get all questions from database
-      .then((questions) => {
-        this.questions = questions;
-        this.displayQuestion(questions, this.currentQuestionIndex); //assign data received to the array
-    })
-      .catch((err) => console.error(err));
+  .then((questions) => {
+    this.questions = questions;
+    this.displayQuestion(questions, this.currentQuestionIndex); //assign data received to the array
+  })
+  .catch((err) => console.error(err));
 };
 
 GameLogic.prototype.displayQuestion = (questions, index) => {
@@ -47,32 +51,29 @@ GameLogic.prototype.dealWithNumberAnswers = function () {
     const answer = evt.detail;
     if (answer.userAnswer == answer.answer) {
       window.alert("You're correct!");
-      this.currentQuestionIndex++
-      PubSub.publish('Game:question-index', this.currentQuestionIndex);
-      PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
+      this.nextQuestion();
     } else {
       window.alert("try again!");
-     //window.alert("check the hint if you like!");
+      window.alert("check the hint if you like!");
     }
   })
 };
 
-GameLogic.prototype.nextQuestion = function () {
-  PubSub.subscribe("GameView:next-question", (evt) => {
-    this.currentQuestionIndex += 1;
-    PubSub.publish('Game:question-index', this.currentQuestionIndex);
-    PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
-    if (this.currentQuestionIndex === this.questions.length - 1) {
-      const nextButton = document.querySelector('#button-next');
-      nextButton.classList.add('hidden');
-    }
-    const previousButton = document.querySelector('#button-previous');
-    previousButton.classList.remove('hidden');
-  })
-};
+// GameLogic.prototype.nextQuestion = function () {
+//   PubSub.subscribe("GameView:next-question", (evt) => {
+//     this.currentQuestionIndex += 1;
+//     PubSub.publish('Game:question-index', this.currentQuestionIndex);
+//     PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
+//     if (this.currentQuestionIndex === this.questions.length - 1) {
+//       const nextButton = document.querySelector('#button-next');
+//       nextButton.classList.add('hidden');
+//     }
+//     const previousButton = document.querySelector('#button-previous');
+//     previousButton.classList.remove('hidden');
+//   })
+// };
 
 GameLogic.prototype.previousQuestion = function () {
-  PubSub.subscribe("GameView:previous-question", (evt) => {
     this.currentQuestionIndex -= 1;
     PubSub.publish('Game:question-index', this.currentQuestionIndex);
     PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
@@ -80,9 +81,19 @@ GameLogic.prototype.previousQuestion = function () {
       const previousButton = document.querySelector('#button-previous');
       previousButton.classList.remove('hidden');
     }
-  })
 };
 
+GameLogic.prototype.nextQuestion = function () {
+  this.currentQuestionIndex += 1;
+  PubSub.publish('Game:question-index', this.currentQuestionIndex);
+  PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
+  if (this.currentQuestionIndex === this.questions.length - 1) {
+    const nextButton = document.querySelector('#button-next');
+    nextButton.classList.add('hidden');
+  }
+  const previousButton = document.querySelector('#button-previous');
+  previousButton.classList.remove('hidden');
+};
 
 
 module.exports = GameLogic;
