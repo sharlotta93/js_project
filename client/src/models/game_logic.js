@@ -2,7 +2,7 @@ const RequestHelper = require('../helpers/request_helper.js');
 const PubSub = require('../helpers/pub_sub.js');
 
 const GameLogic = function () {
-  this.currentQuestionIndex = 0;// temp hack
+  this.currentQuestionIndex = 0;
   this.questions = [];
   this.request = new RequestHelper('http://localhost:3000/api/game');
 }
