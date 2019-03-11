@@ -35,7 +35,7 @@ GameView.prototype.createFeatures = function (item) {
     location.reload(); //finish button refreshes the page
   })
 
-  this.createButton(buttonPrevious, item, "GameView:go-back-a-question");
+  this.createButton(buttonPrevious, item, "GameView:previous-question");
   this.createButton(buttonNext, item, "GameView:next-question");
 
   gameContainer.appendChild(buttonFinish);
@@ -47,8 +47,11 @@ GameView.prototype.createFeatures = function (item) {
 
 GameView.prototype.createButton = function (button, item, channel) {
   button.value = item._id;
+  console.log(item._id);
   button.addEventListener('click', (evt) => {
     PubSub.publish(channel, evt.target.value)
+    console.log(evt.target.value);
+
   })
   return button
 };

@@ -2,7 +2,7 @@ const RequestHelper = require('../helpers/request_helper.js');
 const PubSub = require('../helpers/pub_sub.js');
 
 const GameLogic = function () {
-  this.currentQuestionIndex = 1;// temp hack
+  this.currentQuestionIndex = 0;// temp hack
   this.questions = [];
   this.request = new RequestHelper('http://localhost:3000/api/game');
 }
@@ -16,6 +16,14 @@ GameLogic.prototype.bindEvents = function () {
       }
     })
     hint.lastElementChild.classList.toggle('hidden'); //allows you to switch the hint on and off
+  })
+  PubSub.subscribe("GameView:next-question", (evt) => {
+    let index = this.currentQuestionIndex;
+    index += 1;
+    console.log(index);
+    PubSub.publish('Game:data-ready', this.questions[index]);
+    console.log(this.questions[index]);
+    return index;
   })
 }
 
@@ -53,6 +61,13 @@ GameLogic.prototype.dealWithNumberAnswers = function () {
       window.alert("check the hint if you like!");
     }
   })
+};
+
+GameLogic.prototype.nextQuestion = function (index) {
+  this.currentQuestionIndex ++
+
+  displayQuestion(__, index++)
+
 };
 
 

@@ -7,9 +7,9 @@ db.question.insertMany(
       answerType: "picture",
       genre: "History",
       question: "Which of these is a Greek temple?",
-      image1: url,
+      image1: "url",
       image1_id: "Pantheon",
-      image2: url,
+      image2: "url",
       image2_id: "Colosseum",
       answer: "Pantheon",
       hint: "Ancient Greek architechture features columns."
