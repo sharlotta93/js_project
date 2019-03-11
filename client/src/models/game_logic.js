@@ -23,13 +23,9 @@ GameLogic.prototype.bindEvents = function () {
     PubSub.publish('Game:question-index', this.currentQuestionIndex);
     PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
     if (this.currentQuestionIndex === this.questions.length - 1) {
-
-      const hghg = document.querySelector(evt.detail);
-      hghg.classList.add('hidden');
-
-      console.log(hghg);
-      // evt.detail.classList.add('hidden');
-
+      const nextButton = document.getElementById('button-next');
+      console.log(nextButton);
+      nextButton.classList.add('hidden');
     }
   })
 }
