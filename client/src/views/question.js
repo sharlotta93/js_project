@@ -29,42 +29,52 @@ QuestionView.prototype.render = function (question) {
 
 QuestionView.prototype.publishAnswer = function (answer, item) {
   if (answer.name === "answer-form") {
-    answer.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-      const answerObject = {
-        answerType: item.answer_type,
-        answer: item.answer,
-        userAnswer: evt.target["answer-input"].value,
-      }
-      PubSub.publish("QuestionView:click-guess", answerObject); //getting the value from the input box
-      evt.target.reset();
-    })
+    this.publishNumberAnswer(answer, item);
   }
   else if (answer.name === "radioDiv")
   {
-    console.log(answer);
-    answer.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-      const answerObject = {
-        answerType: item.answer_type,
-        answer: item.answer,
-        userAnswer: evt.target.radioGrp.value
-      }
-      PubSub.publish("QuestionView:click-guess", answerObject);
-    })
-}
+    this.publishRadioAnswer(answer, item);
+  }
   else if (answer.id === "image-container")
   {
-    console.log(answer);
-    answer.addEventListener('click', (evt) => {
-      const answerObject = {
-        answerType: item.answer_type,
-        answer: item.answer,
-        userAnswer: evt.target.id
-      }
-      PubSub.publish("QuestionView:click-guess", answerObject);
-    })
-}
+    this.publishImageAnswer(answer, item);
+  }
+};
+
+QuestionView.prototype.publishNumberAnswer = function (answer, item) {
+  answer.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    const answerObject = {
+      answerType: item.answer_type,
+      answer: item.answer,
+      userAnswer: evt.target["answer-input"].value,
+    }
+    PubSub.publish("QuestionView:click-guess", answerObject); //getting the value from the input box
+    evt.target.reset();
+  })
+};
+
+QuestionView.prototype.publishRadioAnswer = function (answer, item) {
+  answer.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    const answerObject = {
+      answerType: item.answer_type,
+      answer: item.answer,
+      userAnswer: evt.target.radioGrp.value
+    }
+    PubSub.publish("QuestionView:click-guess", answerObject);
+  })
+};
+
+QuestionView.prototype.publishImageAnswer = function (answer, item ) {
+  answer.addEventListener('click', (evt) => {
+    const answerObject = {
+      answerType: item.answer_type,
+      answer: item.answer,
+      userAnswer: evt.target.id
+    }
+    PubSub.publish("QuestionView:click-guess", answerObject);
+  })
 };
 
 QuestionView.prototype.createElement = function (element, text) {
