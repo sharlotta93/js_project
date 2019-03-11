@@ -11,7 +11,6 @@ QuestionView.prototype.render = function (question) {
   const questionContainer = document.createElement("div");
   questionContainer.id = 'question';
 
-
   const genre = this.createElement("h3", question.genre);
   const text = this.createElement("p", question.question);
   const answer = this.createAnswerInput(question);

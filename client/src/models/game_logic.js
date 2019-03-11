@@ -49,6 +49,7 @@ GameLogic.prototype.dealWithAnswers = function () {
       window.alert("You're correct!");
       this.nextQuestion();
     } else {
+      //hint.lastElementChild.classList.toggle('hidden');
       window.alert("try again!");
       window.alert("check the hint if you like!");
     }
