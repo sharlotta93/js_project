@@ -18,12 +18,11 @@ GameLogic.prototype.bindEvents = function () {
     hint.lastElementChild.classList.toggle('hidden'); //allows you to switch the hint on and off
   })
   PubSub.subscribe("GameView:next-question", (evt) => {
-    let index = this.currentQuestionIndex;
-    index += 1;
-    console.log(index);
-    PubSub.publish('Game:data-ready', this.questions[index]);
-    console.log(this.questions[index]);
-    return index;
+    this.currentQuestionIndex += 1;
+    console.log(this.currentQuestionIndex);
+    PubSub.publish('Game:question-index', this.currentQuestionIndex)
+    PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
+    console.log(this.questions[this.currentQuestionIndex]);
   })
 }
 
