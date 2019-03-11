@@ -43,10 +43,6 @@ GameLogic.prototype.displayQuestion = (questions, index) => {
 };
 
 GameLogic.prototype.dealWithAnswers = function () {
-  this.dealWithNumberAnswers()
-};
-
-GameLogic.prototype.dealWithNumberAnswers = function () {
   PubSub.subscribe("QuestionView:click-guess", (evt) => {
     const answer = evt.detail;
     if (answer.userAnswer == answer.answer) {
@@ -58,20 +54,6 @@ GameLogic.prototype.dealWithNumberAnswers = function () {
     }
   })
 };
-
-// GameLogic.prototype.nextQuestion = function () {
-//   PubSub.subscribe("GameView:next-question", (evt) => {
-//     this.currentQuestionIndex += 1;
-//     PubSub.publish('Game:question-index', this.currentQuestionIndex);
-//     PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
-//     if (this.currentQuestionIndex === this.questions.length - 1) {
-//       const nextButton = document.querySelector('#button-next');
-//       nextButton.classList.add('hidden');
-//     }
-//     const previousButton = document.querySelector('#button-previous');
-//     previousButton.classList.remove('hidden');
-//   })
-// };
 
 GameLogic.prototype.previousQuestion = function () {
     this.currentQuestionIndex -= 1;
