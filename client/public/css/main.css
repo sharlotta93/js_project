@@ -18,3 +18,10 @@
 .show {
   display: block;
 }
+
+#image-left, #image-right {
+  width: 20vw;
+  height: 30vh;
+  padding: 20px;
+  display: inline-block;
+}

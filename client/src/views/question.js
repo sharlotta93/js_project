@@ -1,5 +1,6 @@
 const PubSub = require("../helpers/pub_sub");
 const NumberView = require("./number_answer.js");
+const ImageView = require("./image_answer.js");
 const MultipleChoiceView = require("./multiple_choice_answer.js");
 
 const QuestionView = function (container) {
@@ -99,7 +100,8 @@ QuestionView.prototype.createAnswerInput = function (question) {
     return numberQuestion.createInputForm(question);
   }
   else if (question.answerType === "picture") {
-    console.log("I am a picture question!");
+    const imageQuestion = new ImageView();
+    return imageQuestion.createImageQuestion();
   }
   else if (question.answerType === "multipleChoice") {
     const multipleChoiceQuestion = new MultipleChoiceView();
