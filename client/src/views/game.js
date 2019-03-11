@@ -1,7 +1,6 @@
 const PubSub = require("../helpers/pub_sub");
 const QuestionView = require("./question.js");
 
-
 const GameView = function (container) {
   this.container = container;
 }
@@ -25,6 +24,8 @@ GameView.prototype.createFeatures = function (item) {
 
   const buttonPrevious = this.createElement("button", "GO BACK");
   buttonPrevious.id = 'button-previous';
+  buttonPrevious.classList.add('hidden');
+
   const buttonNext = this.createElement("button", "NEXT QUESTION");
   buttonNext.id = 'button-next';
 
@@ -47,11 +48,8 @@ GameView.prototype.createFeatures = function (item) {
 
 GameView.prototype.createButton = function (button, item, channel) {
   button.value = button.id;
-  console.log(button.id);
   button.addEventListener('click', (evt) => {
     PubSub.publish(channel, evt.target.value)
-    console.log(evt.target.value);
-
   })
   return button
 };

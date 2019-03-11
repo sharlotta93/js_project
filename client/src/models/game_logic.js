@@ -17,15 +17,8 @@ GameLogic.prototype.bindEvents = function () {
     })
     hint.lastElementChild.classList.toggle('hidden'); //allows you to switch the hint on and off
   })
-  PubSub.subscribe("GameView:next-question", (evt) => {
-    this.currentQuestionIndex += 1;
-    PubSub.publish('Game:question-index', this.currentQuestionIndex);
-    PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
-    if (this.currentQuestionIndex === this.questions.length - 1) {
-      const nextButton = document.querySelector('#button-next');
-      nextButton.classList.add('hidden');
-    }
-  })
+  this.nextQuestion();
+  this.previousQuestion();
 }
 
 GameLogic.prototype.prepareQuestion = function () {
@@ -64,11 +57,30 @@ GameLogic.prototype.dealWithNumberAnswers = function () {
   })
 };
 
-GameLogic.prototype.nextQuestion = function (index) {
-  this.currentQuestionIndex ++
+GameLogic.prototype.nextQuestion = function () {
+  PubSub.subscribe("GameView:next-question", (evt) => {
+    this.currentQuestionIndex += 1;
+    PubSub.publish('Game:question-index', this.currentQuestionIndex);
+    PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
+    if (this.currentQuestionIndex === this.questions.length - 1) {
+      const nextButton = document.querySelector('#button-next');
+      nextButton.classList.add('hidden');
+    }
+    const previousButton = document.querySelector('#button-previous');
+    previousButton.classList.remove('hidden');
+  })
+};
 
-  displayQuestion(__, index++)
-
+GameLogic.prototype.previousQuestion = function () {
+  PubSub.subscribe("GameView:previous-question", (evt) => {
+    this.currentQuestionIndex -= 1;
+    PubSub.publish('Game:question-index', this.currentQuestionIndex);
+    PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
+    if (this.currentQuestionIndex > 0) {
+      const previousButton = document.querySelector('#button-previous');
+      previousButton.classList.remove('hidden');
+    }
+  })
 };
 
 
