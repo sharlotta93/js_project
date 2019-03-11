@@ -51,8 +51,8 @@ GameLogic.prototype.dealWithNumberAnswers = function () {
       PubSub.publish('Game:question-index', this.currentQuestionIndex);
       PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
     } else {
-     window.alert("try again!");
-     window.alert("check the hint if you like!");
+      window.alert("try again!");
+     //window.alert("check the hint if you like!");
     }
   })
 };

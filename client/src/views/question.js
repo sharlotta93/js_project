@@ -62,6 +62,22 @@ QuestionView.prototype.publishAnswer = function (answer, item) {
       PubSub.publish("QuestionView:click-guess", answerObject);
     })
 }
+  else if (answer.id === "image-container")
+  {
+    console.log(answer);
+    answer.addEventListener('click', (evt) => {
+      //evt.preventDefault();
+      const answerObject = {
+        answerType: item.answer_type,
+        genre: item.genre,
+        question: item.question,
+        answer: item.answer,
+        hint: item.hint,
+        userAnswer: evt.target.id
+      }
+      PubSub.publish("QuestionView:click-guess", answerObject);
+    })
+}
 };
 
 QuestionView.prototype.createElement = function (element, text) {
