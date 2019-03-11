@@ -1,5 +1,6 @@
 const RequestHelper = require('../helpers/request_helper.js');
 const PubSub = require('../helpers/pub_sub.js');
+const GameView = require('../views/game.js');
 
 const GameLogic = function () {
   this.currentQuestionIndex = 0;
@@ -43,16 +44,28 @@ GameLogic.prototype.displayQuestion = (questions, index) => {
 };
 
 GameLogic.prototype.dealWithAnswers = function () {
+  const game = new GameView('#game-container');
+
   PubSub.subscribe("QuestionView:click-guess", (evt) => {
     const answer = evt.detail;
     if (answer.userAnswer == answer.answer) {
-      window.alert("You're correct!");
+      this.popUpBox("You are Correct! YAY");
       this.nextQuestion();
     } else {
-      //hint.lastElementChild.classList.toggle('hidden');
-      window.alert("try again!");
-      window.alert("check the hint if you like!");
+      this.popUpBox("Try Again! Remember you can always check the hint!");
     }
+  })
+};
+
+GameLogic.prototype.popUpBox = function (text) {
+  const popUpBox = document.querySelector('#pop-up-box');
+    popUpBox.textContent = text;
+  const button= document.createElement('button');
+    button.textContent = "OK";
+    popUpBox.appendChild(button);
+    popUpBox.classList.remove('hidden');
+    button.addEventListener('click', (evt) => {
+       popUpBox.classList.add('hidden');
   })
 };
 

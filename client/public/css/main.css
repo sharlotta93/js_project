@@ -25,3 +25,11 @@
   padding: 20px;
   display: inline-block;
 }
+
+#pop-up-box{
+  background-color: rgb(119, 53, 184);
+  width: 50vw;
+  height: 50vh;
+  font-size: 2em;
+  z-index: 2;
+}
