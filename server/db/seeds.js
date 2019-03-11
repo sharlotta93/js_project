@@ -28,7 +28,18 @@ db.question.insertMany(
       choice2: 5600,
       choice3: 0,
       hint: "0 Celsius is the temperature at which water freezes. 5600 Celsius is the temperature of the Sun."
-    }
+    },
+    {
+      answerType: "multipleChoice",
+      genre: "Science",
+      question: "What is the planet closest to the Sun?",
+      answer: "Mercury",
+      choice1: "Earth",
+      choice2: "Pluto",
+      choice3: "Neptun",
+      hint: "Pluto is a dwarf planet and Neptun is the farthest planet from the Sun."
+    },
+
   ]
 );
 
