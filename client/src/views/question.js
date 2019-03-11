@@ -33,10 +33,7 @@ QuestionView.prototype.publishAnswer = function (answer, item) {
       evt.preventDefault();
       const answerObject = {
         answerType: item.answer_type,
-        genre: item.genre,
-        question: item.question,
         answer: item.answer,
-        hint: item.hint,
         userAnswer: evt.target["answer-input"].value,
       }
       PubSub.publish("QuestionView:click-guess", answerObject); //getting the value from the input box
@@ -50,13 +47,7 @@ QuestionView.prototype.publishAnswer = function (answer, item) {
       evt.preventDefault();
       const answerObject = {
         answerType: item.answer_type,
-        genre: item.genre,
-        question: item.question,
         answer: item.answer,
-        choice1: item.choice1,
-        choice2: item.choice2,
-        choice3: item.choice3,
-        hint: item.hint,
         userAnswer: evt.target.radioGrp.value
       }
       PubSub.publish("QuestionView:click-guess", answerObject);
@@ -66,13 +57,9 @@ QuestionView.prototype.publishAnswer = function (answer, item) {
   {
     console.log(answer);
     answer.addEventListener('click', (evt) => {
-      //evt.preventDefault();
       const answerObject = {
         answerType: item.answer_type,
-        genre: item.genre,
-        question: item.question,
         answer: item.answer,
-        hint: item.hint,
         userAnswer: evt.target.id
       }
       PubSub.publish("QuestionView:click-guess", answerObject);
@@ -117,7 +104,7 @@ QuestionView.prototype.createAnswerInput = function (question) {
   }
   else if (question.answerType === "picture") {
     const imageQuestion = new ImageView();
-    return imageQuestion.createImageQuestion();
+    return imageQuestion.createImageQuestion(question.image1, question.image2);
   }
   else if (question.answerType === "multipleChoice") {
     const multipleChoiceQuestion = new MultipleChoiceView();
