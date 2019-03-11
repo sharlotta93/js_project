@@ -39,7 +39,16 @@ db.question.insertMany(
       choice3: "Neptun",
       hint: "Pluto is a dwarf planet and Neptun is the farthest planet from the Sun."
     },
-
+    {
+      answerType: "multipleChoice",
+      genre: "Science",
+      question: "The process by which green plants manufacture their food is called _____ ?",
+      answer: "Photosynthesis",
+      choice1: "Respiration",
+      choice2: "Digestion",
+      choice3: "Excretion",
+      hint: "The food you eat is first digested and later excreted."
+    }
   ]
 );
 
