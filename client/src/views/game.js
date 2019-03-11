@@ -46,8 +46,8 @@ GameView.prototype.createFeatures = function (item) {
 };
 
 GameView.prototype.createButton = function (button, item, channel) {
-  button.value = item._id;
-  console.log(item._id);
+  button.value = button.id;
+  console.log(button.id);
   button.addEventListener('click', (evt) => {
     PubSub.publish(channel, evt.target.value)
     console.log(evt.target.value);

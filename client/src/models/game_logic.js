@@ -18,11 +18,19 @@ GameLogic.prototype.bindEvents = function () {
     hint.lastElementChild.classList.toggle('hidden'); //allows you to switch the hint on and off
   })
   PubSub.subscribe("GameView:next-question", (evt) => {
+    console.log(evt);
     this.currentQuestionIndex += 1;
-    console.log(this.currentQuestionIndex);
-    PubSub.publish('Game:question-index', this.currentQuestionIndex)
+    PubSub.publish('Game:question-index', this.currentQuestionIndex);
     PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
-    console.log(this.questions[this.currentQuestionIndex]);
+    if (this.currentQuestionIndex === this.questions.length - 1) {
+
+      const hghg = document.querySelector(evt.detail);
+      hghg.classList.add('hidden');
+
+      console.log(hghg);
+      // evt.detail.classList.add('hidden');
+
+    }
   })
 }
 
