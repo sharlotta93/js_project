@@ -22,10 +22,13 @@ db.question.insertMany(
       hint: "7 x 14 = 98. Now subtract 6!"
     },
     {
-      answerType: "number",
+      answerType: "multipleChoice",
       genre: "Science",
       question: "What is the temperature at which water boils?",
       answer: 100,
+      choice1: 10,
+      choice2: 5600,
+      choice3: 0,
       hint: "0 Celsius is the temperature at which water freezes. 5600 Celsius is the temperature of the Sun."
     }
   ]

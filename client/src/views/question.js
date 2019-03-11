@@ -82,6 +82,7 @@ QuestionView.prototype.createAnswerInput = function (question) {
   }
   else if (question.answerType === "multipleChoice") {
     const multipleChoiceQuestion = new MultipleChoiceView();
+    return multipleChoiceQuestion.createInputForm(question.choice1, question.answer, question.choice2, question.choice3);
     console.log("I am a multipleChoice question!");
   }
 };
