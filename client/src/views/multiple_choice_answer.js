@@ -4,7 +4,7 @@ const MultipleChoiceView = function () {
 
 MultipleChoiceView.prototype.createInputForm = function (value1, value2, value3, value4) {
 
-  const guessForm = document.createElement('div');
+  const guessForm = document.createElement('form');
   guessForm.name = "radioDiv";
   guessForm.id = 'radioDiv';
 

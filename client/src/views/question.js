@@ -20,7 +20,6 @@ QuestionView.prototype.render = function (question) {
   questionContainer.appendChild(answer);
 
   this.publishAnswer(answer, question);
-  console.log(answer.name)
 
   this.container.appendChild(questionContainer);
 
@@ -29,25 +28,40 @@ QuestionView.prototype.render = function (question) {
 
 QuestionView.prototype.publishAnswer = function (answer, item) {
   if (answer.name === "answer_form") {
-  answer.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-    const answerObject = {
-      answerType: item.answer_type,
-      genre: item.genre,
-      question: item.question,
-      answer: item.answer,
-      hint: item.hint,
-      userAnswer: evt.target["answer-input"].value,
-    }
-    PubSub.publish("QuestionView:click-guess", answerObject); //getting the value from the input box
-    evt.target.reset();
-  })
+    answer.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+      const answerObject = {
+        answerType: item.answer_type,
+        genre: item.genre,
+        question: item.question,
+        answer: item.answer,
+        hint: item.hint,
+        userAnswer: evt.target["answer-input"].value,
+      }
+      PubSub.publish("QuestionView:click-guess", answerObject); //getting the value from the input box
+      evt.target.reset();
+    })
+  }
+  else if (answer.name === "radioDiv")
+  {
+    console.log(answer);
+    answer.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+      const answerObject = {
+        answerType: item.answer_type,
+        genre: item.genre,
+        question: item.question,
+        answer: item.answer,
+        choice1: item.choice1,
+        choice2: item.choice2,
+        choice3: item.choice3,
+        hint: item.hint,
+        userAnswer: evt.target.radioGrp.value
+      }
+      PubSub.publish("QuestionView:click-guess", answerObject);
+    })
 }
-// else if
-// {
-//   console.log("hi!");
-// }
-}
+};
 
 QuestionView.prototype.createElement = function (element, text) {
   const newElement = document.createElement(element)
@@ -90,7 +104,6 @@ QuestionView.prototype.createAnswerInput = function (question) {
   else if (question.answerType === "multipleChoice") {
     const multipleChoiceQuestion = new MultipleChoiceView();
     return multipleChoiceQuestion.createInputForm(question.choice1, question.answer, question.choice2, question.choice3);
-    console.log("I am a multipleChoice question!");
   }
 };
 

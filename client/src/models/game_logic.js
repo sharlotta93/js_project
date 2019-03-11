@@ -2,7 +2,7 @@ const RequestHelper = require('../helpers/request_helper.js');
 const PubSub = require('../helpers/pub_sub.js');
 
 const GameLogic = function () {
-  this.currentQuestionIndex = 1;// temp hack
+  this.currentQuestionIndex = 2;// temp hack
   this.questions = [];
   this.request = new RequestHelper('http://localhost:3000/api/game');
 }
@@ -49,11 +49,12 @@ GameLogic.prototype.dealWithNumberAnswers = function () {
       PubSub.publish('Game:question-index', this.currentQuestionIndex);
       PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
     } else {
-      window.alert("try again!");
-      window.alert("check the hint if you like!");
+     window.alert("try again!");
+     window.alert("check the hint if you like!");
     }
   })
 };
+
 
 
 module.exports = GameLogic;
