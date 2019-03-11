@@ -1,26 +1,29 @@
 const PubSub = require("../helpers/pub_sub");
+const NumberView = require("./number_answer.js");
+const MultipleChoiceView = require("./multiple_choice_answer.js");
 
 const QuestionView = function (container) {
   this.container = container;
 }
 
-QuestionView.prototype.render = function (item) {
+QuestionView.prototype.render = function (question) {
   const questionContainer = document.createElement("div");
   questionContainer.id = 'question';
 
-  const genre = this.createElement("h3", item.genre);
-  const question = this.createElement("p", item.question);
-  const answer = this.createInputForm();
+
+  const genre = this.createElement("h3", question.genre);
+  const text = this.createElement("p", question.question);
+  const answer = this.createAnswerInput(question);
 
   questionContainer.appendChild(genre);
-  questionContainer.appendChild(question);
+  questionContainer.appendChild(text);
   questionContainer.appendChild(answer);
 
-  this.publishAnswer(answer, item);
+  this.publishAnswer(answer, question);
 
   this.container.appendChild(questionContainer);
 
-  this.createHintBox(item);
+  this.createHintBox(question);
 };
 
 QuestionView.prototype.publishAnswer = function (answer, item) {
@@ -69,32 +72,19 @@ QuestionView.prototype.hintButton = function (button, item) {
   return button
 };
 
-QuestionView.prototype.createInputForm = function () {
-//   if (this.question.type == a) {
-//     questionViewA()
-//   }
-//   else if (this.question.type == b) {
-//     questionViewB()
-//   }
-//   else if (this.question.type == c) {
-//     questionViewC()
-//   }
-// };
-const guessForm = document.createElement('form');
-guessForm.name = 'answer_form';
-
-const guessInput = document.createElement('input');
-guessInput.type = 'number';
-guessInput.id = 'answer-input';
-
-const submitButton = document.createElement('button');
-submitButton.type = 'submit';
-submitButton.textContent = 'Guess';
-
-guessForm.appendChild(guessInput);
-guessForm.appendChild(submitButton);
-
-return guessForm;
+QuestionView.prototype.createAnswerInput = function (question) {
+  if (question.answerType === "number") {
+    const numberQuestion = new NumberView();
+    return numberQuestion.createInputForm(question);
+  }
+  else if (question.answerType === "picture") {
+    console.log("I am a picture question!");
+  }
+  else if (question.answerType === "multipleChoice") {
+    const multipleChoiceQuestion = new MultipleChoiceView();
+    console.log("I am a multipleChoice question!");
+  }
 };
+
 
 module.exports = QuestionView;

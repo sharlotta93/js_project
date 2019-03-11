@@ -46,7 +46,7 @@ GameLogic.prototype.dealWithNumberAnswers = function () {
     if (answer.userAnswer == answer.answer) {
       window.alert("You're correct!");
       this.currentQuestionIndex++
-      PubSub.publish('Game:question-index', this.currentQuestionIndex)
+      PubSub.publish('Game:question-index', this.currentQuestionIndex);
       PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
     } else {
       window.alert("try again!");
