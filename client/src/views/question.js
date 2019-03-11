@@ -27,7 +27,7 @@ QuestionView.prototype.render = function (question) {
 };
 
 QuestionView.prototype.publishAnswer = function (answer, item) {
-  if (answer.name === "answer_form") {
+  if (answer.name === "answer-form") {
     answer.addEventListener('submit', (evt) => {
       evt.preventDefault();
       const answerObject = {
