@@ -52,23 +52,14 @@ GameLogic.prototype.dealWithAnswers = function () {
   PubSub.subscribe("QuestionView:click-guess", (evt) => {
     const answer = evt.detail;
     if (answer.userAnswer == answer.answer) {
-      this.popUpBox("You are Correct! YAY!");
+      const variable = new PopUpBox;
+      variable.createPopUpBox(true);
+      this.popUpBox(true);
       this.nextQuestion();
     } else {
-      this.popUpBox("Try Again! Remember you can always check the hint!");
+      new PopUpBox.createPopUpBox(false);
+      this.popUpBox(false);
     }
-  })
-};
-
-GameLogic.prototype.popUpBox = function (text) {
-  const popUpBox = document.querySelector('#pop-up-box');
-    popUpBox.textContent = text;
-  const button= document.createElement('button');
-    button.textContent = "OK";
-    popUpBox.appendChild(button);
-    popUpBox.classList.remove('hidden');
-    button.addEventListener('click', (evt) => {
-       popUpBox.classList.add('hidden');
   })
 };
 
