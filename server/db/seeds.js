@@ -10,7 +10,7 @@ db.question.insertMany(
       image1: "https://www.ancient.eu/img/r/p/500x600/8297.jpg?v=1520937625",
       image2: "https://livitaly-666b.kxcdn.com/wp-content/uploads/2017/07/rome-colosseum-1-750x510.jpg",
       answer: "image-left",
-      hint: "Ancient Greek architechture features columns."
+      hint: "Ancient Greek architecture features columns."
     },
     {
       answerType: "number",
@@ -36,28 +36,28 @@ db.question.insertMany(
       answer: "Mercury",
       choice1: "Earth",
       choice2: "Pluto",
-      choice3: "Neptun",
-      hint: "Pluto is a dwarf planet and Neptun is the farthest planet from the Sun."
+      choice3: "Neptune",
+      hint: "Pluto is a dwarf planet and Neptune is the farthest planet from the Sun."
     },
     {
       answerType: "multipleChoice",
       genre: "Science",
-      question: "The process by which green plants manufacture their food is called _____ ?",
+      question: "What is the process by which plants produce food?",
       answer: "Photosynthesis",
       choice1: "Respiration",
       choice2: "Digestion",
       choice3: "Excretion",
-      hint: "The food you eat is first digested and later excreted."
+      hint: "Plants produce food by using sunlight, water and c02."
     },
     {
       answerType: "multipleChoice",
       genre: "Science",
-      question: "Which part of human body has the most bones?",
+      question: "Which part of the human body has the most bones?",
       answer: "Hand",
       choice1: "Foot",
       choice2: "Spine",
       choice3: "Skull",
-      hint: "Skull has 22 bones, the least of the four."
+      hint: "The skull has 22 bones, which is the least of the four."
     },
   ]
 );

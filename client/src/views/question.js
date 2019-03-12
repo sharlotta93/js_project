@@ -11,10 +11,12 @@ QuestionView.prototype.render = function (question) {
   const questionContainer = document.createElement("div");
   questionContainer.id = 'question';
 
+  const questionNumber = this.createElement("h2", `Question ${question.number}`);
   const genre = this.createElement("h3", question.genre);
   const text = this.createElement("p", question.question);
   const answer = this.createAnswerInput(question);
 
+  questionContainer.appendChild(questionNumber);
   questionContainer.appendChild(genre);
   questionContainer.appendChild(text);
   questionContainer.appendChild(answer);
@@ -120,6 +122,5 @@ QuestionView.prototype.createAnswerInput = function (question) {
     return multipleChoiceQuestion.createInputForm(question.choice1, question.answer, question.choice2, question.choice3);
   }
 };
-
 
 module.exports = QuestionView;
