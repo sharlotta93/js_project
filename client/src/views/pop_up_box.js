@@ -23,7 +23,6 @@ PopUpBox.prototype.createButton = function () {
   const button = document.createElement('button');
   button.textContent = "OK";
   popUpBox.appendChild(button);
-  console.log(button);
   button.addEventListener('click', (evt) => {
     popUpBox.classList.add('hidden');
   });

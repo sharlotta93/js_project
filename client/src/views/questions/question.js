@@ -1,7 +1,7 @@
-const PubSub = require("../helpers/pub_sub");
-const NumberView = require("./number_answer.js");
-const ImageView = require("./image_answer.js");
-const MultipleChoiceView = require("./multiple_choice_answer.js");
+const PubSub = require("../../helpers/pub_sub");
+const NumberView = require("./answers/number_answer.js");
+const ImageView = require("./answers/image_answer.js");
+const MultipleChoiceView = require("./answers/multiple_choice_answer.js");
 
 const QuestionView = function (container) {
   this.container = container;
