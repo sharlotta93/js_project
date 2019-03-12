@@ -60,4 +60,17 @@ GameView.prototype.createElement = function (element, text) {
   return newElement
 };
 
+GameView.prototype.createPopUpBox = function () {
+  // const popUpBox = document.querySelector('#pop-up-box');
+  // popUpBox.textContent = "Try Again! Remember you can always check the hint!"
+  // popUpBox.classList.add('hidden');
+  // const button= document.createElement('button');
+  // button.textContent = "OK";
+  // popUpBox.appendChild(button);
+  //
+  // button.addEventListener('click', (evt) => {
+  //    popUpBox.classList.add('hidden');
+  // })
+};
+
 module.exports = GameView;

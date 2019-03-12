@@ -2,7 +2,6 @@ const ImageView = function () {
 
 };
 
-
 ImageView.prototype.createImageQuestion = function (url1, url2) {
   const imageContainer = document.createElement('div');
   imageContainer.id = "image-container";
