@@ -28,6 +28,26 @@ QuestionView.prototype.render = function (question) {
   this.createHintBox(question);
 };
 
+QuestionView.prototype.createHintBox = function (item) {
+  const hintContainer = document.createElement("div");
+  hintContainer.id = 'hint';
+
+  const hintText = this.createElement("p", item.hint);
+  hintText.classList.add('hidden');
+
+  const hintButton = document.createElement('button');
+  hintButton.textContent = "HINT";
+  hintButton.value = item._id;
+  hintButton.addEventListener('click', (evt) => {
+    hintContainer.lastElementChild.classList.toggle('hidden');
+  })
+
+  hintContainer.appendChild(hintButton);
+  hintContainer.appendChild(hintText);
+
+  this.container.appendChild(hintContainer);
+};
+
 QuestionView.prototype.publishAnswer = function (answer, item) {
   if (answer.name === "answer-form") {
     this.publishNumberAnswer(answer, item);
@@ -84,29 +104,6 @@ QuestionView.prototype.createElement = function (element, text) {
   return newElement;
 };
 
-QuestionView.prototype.createHintBox = function (item) {
-  const hintContainer = document.createElement("div");
-  hintContainer.id = 'hint';
-
-  const hintText = this.createElement("p", item.hint);
-  hintText.classList.add('hidden');
-  const hintButton = this.createElement("button", "HINT");
-
-  this.hintButton(hintButton, item);
-
-  hintContainer.appendChild(hintButton);
-  hintContainer.appendChild(hintText);
-
-  this.container.appendChild(hintContainer);
-};
-
-QuestionView.prototype.hintButton = function (button, item) {
-  button.value = item._id;
-  button.addEventListener('click', (evt) => {
-    PubSub.publish("QuestionView:click-hint", evt.target.value)
-  })
-  return button
-};
 
 QuestionView.prototype.createAnswerInput = function (question) {
   if (question.answerType === "number") {
