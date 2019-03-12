@@ -78,25 +78,27 @@ GameLogic.prototype.popUpBox = function (text) {
 };
 
 GameLogic.prototype.previousQuestion = function () {
-    this.currentQuestionIndex -= 1;
-    PubSub.publish('Game:question-index', this.currentQuestionIndex);
-    PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
-    if (this.currentQuestionIndex > 0) {
-      const previousButton = document.querySelector('#button-previous');
-      previousButton.classList.remove('hidden');
-    }
+  this.currentQuestionIndex -= 1;
+   const question = this.questions[this.currentQuestionIndex];
+     question.number = this.currentQuestionIndex + 1;
+     PubSub.publish('Game:data-ready', question);
+   if (this.currentQuestionIndex > 0) {
+     const previousButton = document.querySelector('#button-previous');
+     previousButton.classList.remove('hidden');
+ }
 };
 
 GameLogic.prototype.nextQuestion = function () {
   this.currentQuestionIndex += 1;
-  PubSub.publish('Game:question-index', this.currentQuestionIndex);
-  PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
-  if (this.currentQuestionIndex === this.questions.length - 1) {
-    const nextButton = document.querySelector('#button-next');
-    nextButton.classList.add('hidden');
-  }
-  const previousButton = document.querySelector('#button-previous');
-  previousButton.classList.remove('hidden');
+    const question = this.questions[this.currentQuestionIndex];
+      question.number = this.currentQuestionIndex + 1;
+      PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
+    if (this.currentQuestionIndex === this.questions.length - 1) {
+      const nextButton = document.querySelector('#button-next');
+      nextButton.classList.add('hidden');
+    }
+    const previousButton = document.querySelector('#button-previous');
+      previousButton.classList.remove('hidden');
 };
 
 
