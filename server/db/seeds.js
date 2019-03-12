@@ -23,10 +23,10 @@ db.question.insertMany(
       answerType: "multipleChoice",
       genre: "Science",
       question: "What is the temperature at which water boils?",
-      answer: 100,
-      choice1: 10,
-      choice2: 5600,
-      choice3: 0,
+      answer: "100°C",
+      choice1: "10°C",
+      choice2: "5600°C",
+      choice3: "0°C",
       hint: "0 Celsius is the temperature at which water freezes. 5600 Celsius is the temperature of the Sun."
     },
     {
