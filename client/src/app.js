@@ -3,7 +3,7 @@ const GameView = require("./views/game.js");
 const Countries = require("./models/countries.js")
 
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {  
   const gameContainer = document.querySelector("#game-container");
   const gameView = new GameView(gameContainer);
   gameView.bindEvents();
