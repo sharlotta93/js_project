@@ -10,10 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const countries = new Countries();
   countries.getData();
-  console.log(countries);
 
   const gameLogic = new GameLogic();
-  console.log('Loaded');
   gameLogic.prepareQuestions();
   gameLogic.bindEvents();
   gameLogic.dealWithAnswers();

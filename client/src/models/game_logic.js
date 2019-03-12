@@ -26,13 +26,21 @@ GameLogic.prototype.bindEvents = function () {
   })
 }
 
+GameLogic.prototype.getFlagQuestions = function () {
+  PubSub.subscribe("Countries:questions-ready", (evt) => {
+    const flagQuestions = evt.detail;
+    flagQuestions.forEach(flagQuestion => this.questions.push(flagQuestion));
+  });
+  return this.questions;
+};
 GameLogic.prototype.prepareQuestions = function () {
   this.request.get() //get all questions from database
   .then((questions) => {
-    this.questions = questions;
+    questions.forEach(question => this.questions.push(question));
     this.displayQuestion(questions, this.currentQuestionIndex); //assign data received to the array
   })
   .catch((err) => console.error(err));
+  this.getFlagQuestions();
 };
 
 GameLogic.prototype.displayQuestion = (questions, index) => {
