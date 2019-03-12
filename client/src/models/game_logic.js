@@ -26,20 +26,23 @@ GameLogic.prototype.bindEvents = function () {
   })
 }
 
-GameLogic.prototype.prepareQuestion = function () {
+GameLogic.prototype.prepareQuestions = function () {
   this.request.get() //get all questions from database
   .then((questions) => {
     this.questions = questions;
-    this.displayQuestion(questions, this.currentQuestionIndex); //assign data received to the array
+    this.displayFirstQuestion(questions, this.currentQuestionIndex); //assign data received to the array
   })
   .catch((err) => console.error(err));
 };
 
-GameLogic.prototype.displayQuestion = (questions, index) => {
+GameLogic.prototype.displayFirstQuestion = (questions, index) => {
+  // Only for displaying first question
   const startButton = document.querySelector('#start-game');
   startButton.addEventListener('click', () => {
     startButton.classList.add('hidden');
-    PubSub.publish('Game:data-ready', questions[index]);
+    const question = questions[index];
+    question.number = index + 1; //create question.number so it can be accessed later  for displaying <h2>Question ${number}</h2> in views/question.js - QuestionView.render
+    PubSub.publish('Game:data-ready', question);
   });
 };
 
@@ -49,7 +52,7 @@ GameLogic.prototype.dealWithAnswers = function () {
   PubSub.subscribe("QuestionView:click-guess", (evt) => {
     const answer = evt.detail;
     if (answer.userAnswer == answer.answer) {
-      this.popUpBox("You are Correct! YAY");
+      this.popUpBox("You are Correct! YAY!");
       this.nextQuestion();
     } else {
       this.popUpBox("Try Again! Remember you can always check the hint!");
@@ -71,8 +74,9 @@ GameLogic.prototype.popUpBox = function (text) {
 
 GameLogic.prototype.previousQuestion = function () {
     this.currentQuestionIndex -= 1;
-    PubSub.publish('Game:question-index', this.currentQuestionIndex);
-    PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
+    const question = this.questions[this.currentQuestionIndex];
+    question.number = this.currentQuestionIndex + 1;
+    PubSub.publish('Game:data-ready', question);
     if (this.currentQuestionIndex > 0) {
       const previousButton = document.querySelector('#button-previous');
       previousButton.classList.remove('hidden');
@@ -81,7 +85,8 @@ GameLogic.prototype.previousQuestion = function () {
 
 GameLogic.prototype.nextQuestion = function () {
   this.currentQuestionIndex += 1;
-  PubSub.publish('Game:question-index', this.currentQuestionIndex);
+  const question = this.questions[this.currentQuestionIndex];
+  question.number = this.currentQuestionIndex + 1;
   PubSub.publish('Game:data-ready', this.questions[this.currentQuestionIndex]);
   if (this.currentQuestionIndex === this.questions.length - 1) {
     const nextButton = document.querySelector('#button-next');
