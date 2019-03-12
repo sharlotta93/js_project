@@ -23,11 +23,29 @@ Countries.prototype.getCountriesData = function (countries) {
     language: country.languages[0]['name']
   })
 );
-  return newCountries;
+  const my = this.createQuestionObject(newCountries);
+  return my;
 };
 
 Countries.prototype.createQuestionObject = function (countries) {
+  const questionObject1 = this.random(countries);
+  const questionObject2 = this.random(countries);
 
+  const newQuestion = {
+      answerType: "picture",
+      genre: "Geography",
+      question: `Which of these is the flag of ${questionObject1.name}?`,
+      image1: questionObject1.flag,
+      image2: questionObject2.flag,
+      answer: "image-right",
+      hint: `The language of that country is ${questionObject1.language} and the capital is ${questionObject1.capital}.`
+  }
+  return newQuestion;
 };
+Countries.prototype.random = function (array) {
+  return array[Math.floor(Math.random() * array.length)]
+};
+
+
 
 module.exports = Countries;
