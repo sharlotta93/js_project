@@ -36,9 +36,12 @@ Countries.prototype.getThreeQuestions = function (countries) {
 };
 
 Countries.prototype.createQuestionObject = function (countries) {
-  const questionObject1 = this.random(countries);
-  const questionObject2 = this.random(countries);
+  let questionObject1 = this.random(countries);
+  let questionObject2 = this.random(countries);
 
+  if (questionObject1 === questionObject2) {
+    let questionObject2 = this.random(countries);
+  }
   const newQuestion = {
       _id: (questionObject1.id + questionObject2.id),
       answerType: "picture",
