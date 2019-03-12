@@ -81,7 +81,7 @@ QuestionView.prototype.publishRadioAnswer = function (answer, item) {
     const answerObject = {
       answerType: item.answer_type,
       answer: item.answer,
-      userAnswer: evt.target.radioGrp.value
+      userAnswer: `${evt.target.radioGrp.value}`
     }
     PubSub.publish("QuestionView:click-guess", answerObject);
   })
