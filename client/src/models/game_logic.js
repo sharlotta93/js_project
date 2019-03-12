@@ -58,9 +58,8 @@ GameLogic.prototype.publishCurrentQuestion = function () {
 
 GameLogic.prototype.previousQuestion = function () {
   this.currentQuestionIndex -= 1;
-
   this.publishCurrentQuestion();
-
+  
   if (this.currentQuestionIndex > 0) {
     const previousButton = document.querySelector('#button-previous');
     previousButton.classList.remove('hidden');
@@ -69,7 +68,6 @@ GameLogic.prototype.previousQuestion = function () {
 
 GameLogic.prototype.nextQuestion = function () {
   this.currentQuestionIndex += 1;
-
   this.publishCurrentQuestion();
 
   if (this.currentQuestionIndex === this.questions.length - 1) {
