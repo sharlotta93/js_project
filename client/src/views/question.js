@@ -2,7 +2,6 @@ const PubSub = require("../helpers/pub_sub");
 const NumberView = require("./number_answer.js");
 const ImageView = require("./image_answer.js");
 const MultipleChoiceView = require("./multiple_choice_answer.js");
-const PopUpBox = require("./pop_up_box.js");
 
 const QuestionView = function (container) {
   this.container = container;

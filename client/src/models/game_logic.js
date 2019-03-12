@@ -26,23 +26,28 @@ GameLogic.prototype.bindEvents = function () {
   })
 }
 
+GameLogic.prototype.getFlagQuestions = function () {
+  PubSub.subscribe("Countries:questions-ready", (evt) => {
+    const flagQuestions = evt.detail;
+    flagQuestions.forEach(flagQuestion => this.questions.push(flagQuestion));
+  });
+  return this.questions;
+};
 GameLogic.prototype.prepareQuestions = function () {
   this.request.get() //get all questions from database
   .then((questions) => {
-    this.questions = questions;
-    this.displayFirstQuestion(questions, this.currentQuestionIndex); //assign data received to the array
+    questions.forEach(question => this.questions.push(question));
+    this.displayQuestion(questions, this.currentQuestionIndex); //assign data received to the array
   })
   .catch((err) => console.error(err));
+  this.getFlagQuestions();
 };
 
-GameLogic.prototype.displayFirstQuestion = (questions, index) => {
-  // Only for displaying first question
+GameLogic.prototype.displayQuestion = (questions, index) => {
   const startButton = document.querySelector('#start-game');
   startButton.addEventListener('click', () => {
     startButton.classList.add('hidden');
-    const question = questions[index];
-    question.number = index + 1; //create question.number so it can be accessed later  for displaying <h2>Question ${number}</h2> in views/question.js - QuestionView.render
-    PubSub.publish('Game:data-ready', question);
+    PubSub.publish('Game:data-ready', questions[index]);
   });
 };
 
@@ -52,26 +57,23 @@ GameLogic.prototype.dealWithAnswers = function () {
   PubSub.subscribe("QuestionView:click-guess", (evt) => {
     const answer = evt.detail;
     if (answer.userAnswer == answer.answer) {
-      const variable = new PopUpBox;
-      variable.createPopUpBox(true);
-      this.popUpBox(true);
+      PubSub.publish("PopUpBox:answer-calculated", true);
       this.nextQuestion();
     } else {
-      new PopUpBox.createPopUpBox(false);
-      this.popUpBox(false);
+      PubSub.publish("PopUpBox:answer-calculated", false);
     }
-  })
+  });
 };
 
 GameLogic.prototype.previousQuestion = function () {
-    this.currentQuestionIndex -= 1;
-    const question = this.questions[this.currentQuestionIndex];
-    question.number = this.currentQuestionIndex + 1;
-    PubSub.publish('Game:data-ready', question);
-    if (this.currentQuestionIndex > 0) {
-      const previousButton = document.querySelector('#button-previous');
-      previousButton.classList.remove('hidden');
-    }
+  this.currentQuestionIndex -= 1;
+  const question = this.questions[this.currentQuestionIndex];
+  question.number = this.currentQuestionIndex + 1;
+  PubSub.publish('Game:data-ready', question);
+  if (this.currentQuestionIndex > 0) {
+    const previousButton = document.querySelector('#button-previous');
+    previousButton.classList.remove('hidden');
+  }
 };
 
 GameLogic.prototype.nextQuestion = function () {

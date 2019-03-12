@@ -22,26 +22,26 @@ GameView.prototype.createFeatures = function (item) {
   const gameContainer = document.createElement("div");
   gameContainer.id = 'game';
 
-  const buttonPrevious = this.createElement("button", "GO BACK");
-  buttonPrevious.id = 'button-previous';
-  buttonPrevious.classList.add('hidden');
+  const previousButton = this.createElement("button", "GO BACK");
+  previousButton.id = 'button-previous';
+  previousButton.classList.add('hidden');
 
-  const buttonNext = this.createElement("button", "NEXT QUESTION");
-  buttonNext.id = 'button-next';
+  const nextButton = this.createElement("button", "NEXT QUESTION");
+  nextButton.id = 'button-next';
 
-  const buttonFinish = document.createElement('button');
-  buttonFinish.textContent = "FINISH GAME";
-  buttonFinish.value = item._id;
-  buttonFinish.addEventListener('click', (evt) => {
+  const finishButton = document.createElement('button');
+  finishButton.textContent = "FINISH GAME";
+  finishButton.value = item._id;
+  finishButton.addEventListener('click', (evt) => {
     location.reload(); //finish button refreshes the page
   })
 
-  this.createButton(buttonPrevious, item, "GameView:previous-question");
-  this.createButton(buttonNext, item, "GameView:next-question");
+  this.createButton(previousButton, item, "GameView:previous-question");
+  this.createButton(nextButton, item, "GameView:next-question");
 
-  gameContainer.appendChild(buttonFinish);
-  gameContainer.appendChild(buttonPrevious);
-  gameContainer.appendChild(buttonNext);
+  gameContainer.appendChild(finishButton);
+  gameContainer.appendChild(previousButton);
+  gameContainer.appendChild(nextButton);
 
   this.container.appendChild(gameContainer);
 };

@@ -4,18 +4,26 @@ const PopUpBox = function () {
 
 }
 
-PopUpBox.prototype.createPopUpBox = function (boolean) {
+PopUpBox.prototype.createPopUpBox = function () {
   const popUpBox = document.querySelector('#pop-up-box');
-  if (boolean) {
-    popUpBox.textContent = "You are Correct! YAY!";
-  } else {
-    popUpBox.textContent =  "Try Again! Remember you can always check the hint!";
-  }
-  popUpBox.classList.remove('hidden');
+  PubSub.subscribe("PopUpBox:answer-calculated", (evt) => {
+    popUpBox.classList.remove('hidden');
+    if (evt.detail) {
+      popUpBox.textContent = "You are Correct! YAY!";
+      this.createButton();
+    } else {
+      popUpBox.textContent =  "Try Again! Remember you can always check the hint!";
+      this.createButton();
+    }
+  });
+};
 
+PopUpBox.prototype.createButton = function () {
+  const popUpBox = document.querySelector('#pop-up-box');
   const button = document.createElement('button');
   button.textContent = "OK";
   popUpBox.appendChild(button);
+  console.log(button);
   button.addEventListener('click', (evt) => {
     popUpBox.classList.add('hidden');
   });

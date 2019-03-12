@@ -61,5 +61,3 @@ db.question.insertMany(
     },
   ]
 );
-
-// other answer_type is "text"
