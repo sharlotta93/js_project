@@ -1,5 +1,5 @@
 const PubSub = require("../helpers/pub_sub");
-const QuestionView = require("./question.js");
+const QuestionView = require("./questions/question.js");
 
 const GameView = function (container) {
   this.container = container;

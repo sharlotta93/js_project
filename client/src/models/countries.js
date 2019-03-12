@@ -36,17 +36,20 @@ Countries.prototype.getThreeQuestions = function (countries) {
 };
 
 Countries.prototype.createQuestionObject = function (countries) {
-  const questionObject1 = this.random(countries);
-  const questionObject2 = this.random(countries);
+  let questionObject1 = this.random(countries);
+  let questionObject2 = this.random(countries);
 
+  if (questionObject1 === questionObject2) {
+    let questionObject2 = this.random(countries);
+  }
   const newQuestion = {
       _id: (questionObject1.id + questionObject2.id),
       answerType: "picture",
       genre: "Geography",
       question: `Which of these is the flag of ${questionObject1.name}?`,
-      image1: questionObject1.flag,
-      image2: questionObject2.flag,
-      answer: "image-left",
+      image1: questionObject2.flag,
+      image2: questionObject1.flag,
+      answer: "image-right",
       hint: `The language of that country is ${questionObject1.language} and the capital is ${questionObject1.capital}.`
   }
   return newQuestion;

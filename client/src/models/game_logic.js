@@ -9,15 +9,6 @@ const GameLogic = function () {
 }
 
 GameLogic.prototype.bindEvents = function () {
-  PubSub.subscribe("QuestionView:click-hint", (evt) => {
-    const id = evt.detail;
-    this.questions.forEach((question) => {
-      if (id === question._id) {  //getting the correct hint from the db
-        const hint = question.hint;
-      }
-    })
-    hint.lastElementChild.classList.toggle('hidden'); //allows you to switch the hint on and off
-  })
   PubSub.subscribe("GameView:next-question", (evt) => {
     this.nextQuestion();
   })
