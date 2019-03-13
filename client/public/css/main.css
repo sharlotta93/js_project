@@ -187,7 +187,6 @@ button#button-next, button#button-previous {
   outline: none;
   background-color: transparent;
   border-radius: 8px;
-  box-shadow: 0 8px 0 #3755c5, 0 15px 20px rgba(0, 0, 0, .35);
   transition: box-shadow .1s ease-in-out;
   font-size: 26px;
   color: #fff;
@@ -195,11 +194,6 @@ button#button-next, button#button-previous {
 
 .styled-button.large {
   font-size: 70px;
-}
-
-
-.styled-button.red {
-  box-shadow: 0 8px 0 #7a2020, 0 15px 20px rgba(0, 0, 0, .35);
 }
 
 .styled-button span {
@@ -234,14 +228,6 @@ button#button-next, button#button-previous {
 
 .styled-button.red:hover span {
   background-color: #ec6a6a;
-}
-
-.styled-button:active, .styled-button:focus {
-  box-shadow: 0 8px 0 #3755c5, 0 12px 10px rgba(0, 0, 0, .3);
-}
-
-.styled-button.red:active, .styled-button.red:focus {
-  box-shadow: 0 8px 0 #7a2020, 0 12px 10px rgba(0, 0, 0, .3);
 }
 
 .styled-button:active span {

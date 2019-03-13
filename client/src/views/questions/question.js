@@ -37,7 +37,10 @@ QuestionView.prototype.createHintBox = function (item) {
   hintText.classList.add('hint-text')
 
   const hintButton = document.createElement('button');
-  hintButton.textContent = "HINT";
+  hintButton.classList.add('styled-button');
+  const span = document.createElement('span');
+  span.textContent = "HINT";
+  hintButton.appendChild(span);
   hintButton.value = item._id;
   hintButton.addEventListener('click', (evt) => {
     hintContainer.lastElementChild.classList.toggle('hidden');
