@@ -22,6 +22,14 @@ body {
 #question {
   background-color: rgb(74, 226, 180);
   grid-area: 1 / 1 / 4 / 6;
+
+}
+
+/* to move images into place */
+#image-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 3fr 1fr;
+  grid-template-rows: auto;
 }
 
 #hint {
@@ -33,17 +41,18 @@ body {
   display: block;
 }
 
-#image-right {
-  grid-area: 2 / 2 / 3 / 3;
-  object-fit: cover;
-  max-width: 20vw;
-
-}
 #image-left {
-  grid-area: 2 / 2 / 4 / 5;
-  object-fit: cover;
-  max-width: 20vw;
+  grid-column: 2 / 3;
+  object-fit: contain;
+  width: 25vw;
+  height: 20vh;
+}
 
+#image-right {
+  grid-column: 4 / 5;
+  object-fit: contain;
+  width: 25vw;
+  height: 20vh;
 }
 
 #pop-up-box{
