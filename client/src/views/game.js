@@ -33,6 +33,7 @@ GameView.prototype.createFeatures = function (item) {
 
   const finishButton = document.createElement('button');
   finishButton.classList.add('styled-button');
+  finishButton.classList.add('red');
   const span = document.createElement('span');
   span.textContent = "FINISH GAME";
   finishButton.appendChild(span);
