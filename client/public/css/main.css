@@ -120,7 +120,7 @@ button {
   cursor: pointer;
 }
 
-#start-button button {
+#start-container button {
   margin: 50vh 45vw;
   border-radius: 20px;
   box-shadow: 0 15px 0 #3755c5, 0 15px 20px rgba(0, 0, 0, .35);
@@ -141,8 +141,13 @@ button {
   margin-right: 65vw;
 }
 
+button#button-next, button#button-previous {
+  border: none;
+  font-size: 2.5em;
+  color: rgb(11, 163, 31);
+}
+
 #finish-button {
-  /* margin-top: 5vh; */
   margin-left: 65vw;
   position: fixed;
 }
