@@ -107,10 +107,7 @@ p.hint-text {
   grid-area: 2 / 2 / 3 / 3;
   background-color: rgba(68, 182, 131, 0.75);
   width: 50vw;
-  height: 50vh;
   margin-left: 10vw;
-  margin-top: 10vh;
-  padding-top: 20vh;
   border-radius: 20px;
 }
 
@@ -179,7 +176,6 @@ button#button-next, button#button-previous {
 }
 
 #finish-button {
-  /* margin-top: 5vh; */
   margin-left: 65vw;
   position: fixed;
 }
@@ -187,7 +183,3 @@ button#button-next, button#button-previous {
 #hint {
   padding-top: 2vh;
 }
-
-/* button#ok-button { doesnt work
-  margin: 50vh;
-} */
