@@ -24,9 +24,17 @@ PopUpBox.prototype.createButton = function () {
   button.classList.add('ok-button');
   button.textContent = "OK";
   popUpBox.appendChild(button);
+  button.focus();
   button.addEventListener('click', (evt) => {
     popUpBox.classList.add('hidden');
   });
+  button.addEventListener('keydown', (evt) => {
+      console.log(evt);
+      if (evt.key == 'Enter') {
+        if (popUpBox.classList.contains('hidden')) return
+        popUpBox.classList.add('hidden');
+      }
+    });
 };
 
 module.exports = PopUpBox;
