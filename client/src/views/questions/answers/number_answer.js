@@ -2,7 +2,6 @@ const NumberView = function () {
 
 };
 
-
 NumberView.prototype.createInputForm = function () {
 
   const guessForm = document.createElement('form');

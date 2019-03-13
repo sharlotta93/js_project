@@ -39,9 +39,12 @@ Countries.prototype.createQuestionObject = function (countries) {
   let questionObject1 = this.random(countries);
   let questionObject2 = this.random(countries);
 
-  if (questionObject1 === questionObject2) {
+  console.log(questionObject1);
+  console.log(questionObject2);
+  if (questionObject1.name === questionObject2.name) {
     let questionObject2 = this.random(countries);
   }
+
   const newQuestion = {
       _id: (questionObject1.id + questionObject2.id),
       answerType: "picture",

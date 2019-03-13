@@ -1,7 +1,6 @@
 const PubSub = require("../helpers/pub_sub");
 
 const FinalView = function () {
-  // this.container = container;
 }
 
 FinalView.prototype.bindEvents = function () {
