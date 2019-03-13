@@ -39,12 +39,22 @@ GameLogic.prototype.prepareQuestions = function () {
 };
 
 GameLogic.prototype.setupStartButtonListener = function () {
-  const startButton = document.querySelector('#start-game');
+  const startContainer = document.querySelector('#start-container');
+  startContainer.focus();
+  const startButton = document.querySelector('#start-button');
   startButton.addEventListener('click', () => {
     startButton.classList.add('hidden');
     this.publishCurrentQuestion();
   });
+  document.addEventListener('keyup', (evt) => {
+    if (evt.key == 'Enter') {
+      if (startButton.classList.contains('hidden')) return;
+      startButton.classList.add('hidden');
+      this.publishCurrentQuestion();
+    }
+  });
 };
+
 GameLogic.prototype.publishCurrentQuestion = function () {
   const question = this.questions[this.currentQuestionIndex]
   question.number = this.currentQuestionIndex + 1;
@@ -92,7 +102,5 @@ GameLogic.prototype.dealWithAnswers = function () {
     }
   });
 };
-
-
 
 module.exports = GameLogic;

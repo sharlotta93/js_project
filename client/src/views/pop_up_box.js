@@ -21,8 +21,10 @@ PopUpBox.prototype.createPopUpBox = function () {
 PopUpBox.prototype.createButton = function (isCorrect, isLastQuestion) {
   const popUpBox = document.querySelector('#pop-up-box');
   const button = document.createElement('button');
+  button.classList.add('ok-button');
   button.textContent = "OK";
   popUpBox.appendChild(button);
+<<<<<<< HEAD
   if (isLastQuestion && isCorrect) {
     button.addEventListener('click', (evt) => {
       popUpBox.classList.add('hidden')
@@ -33,6 +35,19 @@ PopUpBox.prototype.createButton = function (isCorrect, isLastQuestion) {
       popUpBox.classList.add('hidden');
     });
   }
+=======
+  button.focus();
+  button.addEventListener('click', (evt) => {
+    popUpBox.classList.add('hidden');
+  });
+  button.addEventListener('keydown', (evt) => {
+      console.log(evt);
+      if (evt.key == 'Enter') {
+        if (popUpBox.classList.contains('hidden')) return
+        popUpBox.classList.add('hidden');
+      }
+    });
+>>>>>>> 168a4b66d93d582702f0d929ef74dbf9dee5de11
 };
 
 
