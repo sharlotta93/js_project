@@ -3,7 +3,7 @@ const PubSub = require('../helpers/pub_sub.js');
 const GameView = require('../views/game.js');
 
 const GameLogic = function () {
-  this.currentQuestionIndex = 0;
+  this.currentQuestionIndex = 7;
   this.questions = [];
   this.request = new RequestHelper('http://localhost:3000/api/game');
 }
@@ -62,6 +62,7 @@ GameLogic.prototype.nextQuestion = function () {
   this.publishCurrentQuestion();
 
   if (this.currentQuestionIndex === this.questions.length - 1) {
+    PubSub.publish("PopUpBox:last-question");
     const nextButton = document.querySelector('#button-next');
     nextButton.classList.add('hidden');
   }
