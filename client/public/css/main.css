@@ -141,6 +141,12 @@ button {
   margin-right: 65vw;
 }
 
+button#button-next, button#button-previous {
+  border: none;
+  font-size: 2.5em;
+  color: rgb(92, 186, 105);
+}
+
 #finish-button {
   /* margin-top: 5vh; */
   margin-left: 65vw;

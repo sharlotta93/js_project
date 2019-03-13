@@ -22,12 +22,14 @@ GameView.prototype.createFeatures = function (item) {
   const gameContainer = document.createElement("div");
   gameContainer.id = 'game';
 
-  const previousButton = this.createElement("button", "GO BACK");
-  previousButton.id = 'button-previous';
+  const previousButton = this.createButton("button-previous", "GameView:previous-question");
   previousButton.classList.add('hidden');
+  const icon1 = this.createIcon('far', 'fa-arrow-alt-circle-left');
+  previousButton.appendChild(icon1);
 
-  const nextButton = this.createElement("button", "NEXT QUESTION");
-  nextButton.id = 'button-next';
+  const nextButton = this.createButton("button-next", "GameView:next-question");
+  const icon2 = this.createIcon('far', 'fa-arrow-alt-circle-right');
+  nextButton.appendChild(icon2);
 
   const finishButton = document.createElement('button');
   finishButton.textContent = "FINISH GAME";
@@ -36,9 +38,6 @@ GameView.prototype.createFeatures = function (item) {
     location.reload(); //finish button refreshes the page
   })
 
-  this.createButton(previousButton, item, "GameView:previous-question");
-  this.createButton(nextButton, item, "GameView:next-question");
-
   gameContainer.appendChild(finishButton);
   gameContainer.appendChild(previousButton);
   gameContainer.appendChild(nextButton);
@@ -46,11 +45,21 @@ GameView.prototype.createFeatures = function (item) {
   this.container.appendChild(gameContainer);
 };
 
-GameView.prototype.createButton = function (button, item, channel) {
-  button.addEventListener('click', (evt) => {
-    PubSub.publish(channel, evt.target.value)
+GameView.prototype.createButton = function (id, channel) {
+  const newButton = document.createElement('button');
+  newButton.id = id;
+  newButton.addEventListener('click', (evt) => {
+   PubSub.publish(channel, evt.target.value)
   })
-  return button
+  return newButton
+};
+
+GameView.prototype.createIcon = function (name1, name2) {
+  const icon = document.createElement('i');
+  icon.classList.add(name1);
+  icon.classList.add(name2);
+
+  return icon
 };
 
 GameView.prototype.createElement = function (element, text) {
