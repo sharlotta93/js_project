@@ -8,7 +8,7 @@ body {
 }
 
 p {
-  font-size: 2em;
+  font-size: 1.8em;
 }
 
 h2 {
@@ -49,6 +49,7 @@ h3 {
 #hint {
   background-color: rgb(57, 208, 86);
   grid-area: 4 / 1 / 5 / 6;
+  height: 20vh;
 }
 
 .show {
@@ -87,4 +88,20 @@ button {
 
 #start-button button {
   margin: 50vh 45vw;
+}
+
+#button-next {
+  position: fixed;
+  margin-left: 50vw;
+}
+
+#button-previous {
+  position: fixed;
+  margin-right: 65vw;
+}
+
+#finish-button {
+  margin-top: 5vh;
+  margin-left: 60vw;
+  position: fixed;
 }
