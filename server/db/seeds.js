@@ -47,7 +47,7 @@ db.question.insertMany(
       choice1: "Respiration",
       choice2: "Digestion",
       choice3: "Excretion",
-      hint: "Plants produce food by using sunlight, water and c02."
+      hint: "Plants produce food by using sunlight, water and C02."
     },
     {
       answerType: "multipleChoice",

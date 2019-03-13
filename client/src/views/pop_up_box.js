@@ -21,6 +21,7 @@ PopUpBox.prototype.createPopUpBox = function () {
 PopUpBox.prototype.createButton = function () {
   const popUpBox = document.querySelector('#pop-up-box');
   const button = document.createElement('button');
+  button.classList.add('ok-button');
   button.textContent = "OK";
   popUpBox.appendChild(button);
   button.addEventListener('click', (evt) => {
