@@ -13,11 +13,13 @@ FinalView.prototype.bindEvents = function () {
 
 FinalView.prototype.createFinalMessage = function () {
   const finalMessage = document.querySelector('#final-message');
+  finalMessage.classList.remove('hidden');
   const paragraph = document.createElement('p');
-  paragraph.textContent = "Congratulations! You are awesome!";
+
+  paragraph.textContent = "Congratulations! You are AWESOME!";
 
   const image = document.createElement('img');
-  image.src = 'http://stmarymagdalenpri8403301.wp-sch.durham.gov.uk/wp-content/uploads/sites/19/2017/05/Screen-Shot-2017-05-11-at-20.21.33.png';
+  image.src = "https://media.giphy.com/media/l4q7TIW8nEZYOJUf6/giphy.gif";
   finalMessage.appendChild(image);
   finalMessage.appendChild(paragraph);
 

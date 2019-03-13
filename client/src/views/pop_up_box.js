@@ -5,17 +5,28 @@ const PopUpBox = function () {
 
 PopUpBox.prototype.createPopUpBox = function () {
   const popUpBox = document.querySelector('#pop-up-box');
+  const image = this.createImage("https://media1.giphy.com/media/3o7WIJufZnyG3LE2Ws/source.gif");
+  const image2 = this.createImage("https://i.kym-cdn.com/photos/images/original/000/698/198/cc0.gif");
+  //"https://i.kym-cdn.com/photos/images/original/001/173/316/86f.gif"
+
   PubSub.subscribe("PopUpBox:answer-calculated", (evt) => {
     const isCorrect = evt.detail.correct;
     const isLastQuestion = evt.detail.isLastQuestion;
     popUpBox.classList.remove('hidden');
     if (evt.detail.correct) {
       popUpBox.textContent = "You are Correct! YAY!";
+      popUpBox.appendChild(image);
     } else {
-      popUpBox.textContent =  "Try Again! Remember you can always check the hint!";
+      // popUpBox.textContent =  "Remember you can always check the hint!";
+      popUpBox.appendChild(image2);
     }
     this.createButton(isCorrect, isLastQuestion);
   });
+};
+PopUpBox.prototype.createImage = function (url) {
+  const image = document.createElement('img');
+  image.src = url;
+  return image
 };
 
 PopUpBox.prototype.createButton = function (isCorrect, isLastQuestion) {

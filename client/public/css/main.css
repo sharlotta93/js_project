@@ -40,6 +40,10 @@ h3 {
   height: 35vh;
   padding-top: 20px;
 }
+
+#pop-up-box img {
+  width: 30vw;
+}
 .hidden {
   display: none;
   visibility: hidden;
@@ -51,14 +55,14 @@ h3 {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  opacity: 0.95;
-
 }
 
 #question {
-  background-color: rgb(90, 162, 228);
+  background-color: rgba(42, 214, 95, 0.8);
   grid-area: 1 / 1 / 4 / 6;
-  border-radius: 20px;
+  border-radius: 20px 20px 0 0;
+  border: 2px solid white;
+  border-bottom: none;
 }
 
 /* to move images into place */
@@ -69,10 +73,12 @@ h3 {
 }
 
 #hint {
-  background-color: rgb(74, 196, 152);
+  background-color: rgba(74, 196, 152, 0.75);
   grid-area: 4 / 1 / 5 / 6;
   height: 18vh;
-  border-radius: 20px;
+  border-radius: 0 0 20px 20px;
+  border: 2px solid white;
+  border-top: none;
 }
 
 p.hint-text {
@@ -99,7 +105,7 @@ p.hint-text {
 
 #pop-up-box{
   grid-area: 2 / 2 / 3 / 3;
-  background-color: rgb(41, 196, 192);
+  background-color: rgba(41, 196, 192, 0.99);
   font-size: 2em;
   padding-bottom: 30px;
   z-index: 2;
@@ -126,18 +132,18 @@ input[type="number"] {
 /* RADIO BUTTONS */
 label {
   display: block;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 5px 10px;
   border: 2px solid;
   margin-bottom: 5px;
   cursor: pointer;
-  max-width: 21vw;
+  max-width: 25vw;
   text-align: center;
   background-color: rgb(74, 196, 152);
 }
 form#radioDiv {
   font-size: 1.4em;
-  margin-left: 25vw;
+  margin-left: 20vw;
 }
 
 input[type="radio"] {
@@ -158,7 +164,7 @@ button {
 
 #button-next {
   position: fixed;
-  margin-left: 50vw;
+  margin-left: 45vw;
 }
 
 #button-previous {
@@ -168,7 +174,7 @@ button {
 
 button#button-next, button#button-previous {
   border: none;
-  font-size: 2.5em;
+  font-size: 4em;
   color: rgb(9, 28, 57);
   background-color: transparent;
 }
