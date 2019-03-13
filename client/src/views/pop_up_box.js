@@ -28,10 +28,9 @@ PopUpBox.prototype.createButton = function () {
   popUpBox.appendChild(button);
   if (this.lastQuestion) {
     button.addEventListener('click', (evt) => {
-      // publish / do something different
-    }
-  }
-  else {
+      PubSub.publish("FinalView:display", evt)
+    });
+  } else {
     button.addEventListener('click', (evt) => {
       popUpBox.classList.add('hidden');
     });
