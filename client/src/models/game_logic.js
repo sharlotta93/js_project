@@ -8,6 +8,10 @@ const GameLogic = function () {
   this.request = new RequestHelper('http://localhost:3000/api/game');
 }
 
+GameLogic.prototype.isLastQuestion = function() {
+  return this.currentQuestionIndex === this.questions.length - 1;
+}
+
 GameLogic.prototype.bindEvents = function () {
   PubSub.subscribe("GameView:next-question", (evt) => {
     this.nextQuestion();
@@ -60,7 +64,6 @@ GameLogic.prototype.publishCurrentQuestion = function () {
 GameLogic.prototype.previousQuestion = function () {
   this.currentQuestionIndex -= 1;
   this.publishCurrentQuestion();
-
   if (this.currentQuestionIndex > 0) {
     const previousButton = document.querySelector('#button-previous');
     previousButton.classList.remove('hidden');
@@ -70,11 +73,11 @@ GameLogic.prototype.previousQuestion = function () {
 GameLogic.prototype.nextQuestion = function () {
   this.currentQuestionIndex += 1;
   this.publishCurrentQuestion();
-
-  if (this.currentQuestionIndex === this.questions.length - 1) {
+  if (this.isLastQuestion()) {
     const nextButton = document.querySelector('#button-next');
     nextButton.classList.add('hidden');
   }
+
   const previousButton = document.querySelector('#button-previous');
   previousButton.classList.remove('hidden');
 };
@@ -85,10 +88,16 @@ GameLogic.prototype.dealWithAnswers = function () {
   PubSub.subscribe("QuestionView:click-guess", (evt) => {
     const answer = evt.detail;
     if (answer.userAnswer == answer.answer) {
-      PubSub.publish("PopUpBox:answer-calculated", true);
+      PubSub.publish("PopUpBox:answer-calculated", {
+        correct: true,
+        isLastQuestion: this.isLastQuestion()
+      });
       this.nextQuestion();
     } else {
-      PubSub.publish("PopUpBox:answer-calculated", false);
+      PubSub.publish("PopUpBox:answer-calculated", {
+        correct: false,
+        isLastQuestion: this.isLastQuestion()
+      });
     }
   });
 };
