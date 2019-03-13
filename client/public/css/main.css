@@ -7,6 +7,8 @@ body {
   height: 100vh;
   width: 100vw;
   text-align: center;
+  font-family: 'Oleo Script', Arial, sans-serif;
+  color: white;
 }
 
 img {
@@ -15,15 +17,31 @@ img {
 
 p {
   font-size: 1.8em;
+  text-shadow:
+  -1px -1px 0 #000,
+   1px -1px 0 #000,
+   -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 h2 {
   text-align: left;
   padding-left: 5vw;
+  text-shadow:
+  -1px -1px 0 #000,
+   1px -1px 0 #000,
+   -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 h3 {
   font-size: 2.3em;
+  text-shadow:
+  -1px -1px 0 #000,
+   1px -1px 0 #000,
+   -1px 1px 0 #000,
+    1px 1px 0 #000;
+
 }
 
 .hidden {
@@ -37,12 +55,14 @@ h3 {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 1fr);
+  opacity: 0.95;
+
 }
 
 #question {
   background-color: rgb(74, 226, 180);
   grid-area: 1 / 1 / 4 / 6;
-
+  border-radius: 20px;
 }
 
 /* to move images into place */
@@ -55,7 +75,8 @@ h3 {
 #hint {
   background-color: rgb(57, 208, 86);
   grid-area: 4 / 1 / 5 / 6;
-  height: 20vh;
+  height: 18vh;
+  border-radius: 20px;
 }
 
 p.hint-text {
@@ -93,7 +114,7 @@ p.hint-text {
 /* INPUT BOX */
 input[type="number"] {
   padding: 5px 10px;
-  font-size: 1em;
+  font-size: 1.2em;
   border-radius: 10px;
 }
 
