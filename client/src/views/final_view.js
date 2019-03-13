@@ -16,6 +16,10 @@ FinalView.prototype.createFinalMessage = function () {
   const finalMessage = document.querySelector('#final-message');
   const paragraph = document.createElement('p');
   paragraph.textContent = "Congratulations! You are awesome!";
+
+  const image = document.createElement('img');
+  image.src = 'http://stmarymagdalenpri8403301.wp-sch.durham.gov.uk/wp-content/uploads/sites/19/2017/05/Screen-Shot-2017-05-11-at-20.21.33.png';
+  finalMessage.appendChild(image);
   finalMessage.appendChild(paragraph);
 
 }

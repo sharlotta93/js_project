@@ -35,6 +35,11 @@ h3 {
 
 }
 
+#final-message img {
+  width: 25vw;
+  height: 35vh;
+  padding-top: 20px;
+}
 .hidden {
   display: none;
   visibility: hidden;
