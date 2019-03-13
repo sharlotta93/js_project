@@ -120,7 +120,7 @@ button {
   cursor: pointer;
 }
 
-#start-button button {
+#start-container button {
   margin: 50vh 45vw;
   border-radius: 20px;
   box-shadow: 0 15px 0 #3755c5, 0 15px 20px rgba(0, 0, 0, .35);
