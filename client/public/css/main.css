@@ -49,6 +49,20 @@ h3 {
   visibility: hidden;
 }
 
+#start-container img {
+  width: 13vw;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+}
+
+#bee-container img {
+  width: 10vw;
+  position: absolute;
+  top: 30%;
+  left: 83%;
+}
+
 #game-container {
   grid-area: 2 / 2 / 3 / 3;
   z-index: 0;
