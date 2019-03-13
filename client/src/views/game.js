@@ -32,6 +32,7 @@ GameView.prototype.createFeatures = function (item) {
   const finishButton = document.createElement('button');
   finishButton.textContent = "FINISH GAME";
   finishButton.value = item._id;
+  finishButton.id = "finish-button";
   finishButton.addEventListener('click', (evt) => {
     location.reload(); //finish button refreshes the page
   })

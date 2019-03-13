@@ -4,6 +4,7 @@
   "description": "Name is a full stack JavaScript application with an Express server and MongoDB database.",
   "main": "webpack.config.js",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.15",
     "express": "^4.16.4",
     "mongodb": "^3.1.13",
     "nodemon": "^1.18.10"

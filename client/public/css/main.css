@@ -1,36 +1,61 @@
+body {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 1fr 3fr 1fr;
+  height: 100vh;
+  width: 100vw;
+}
+
 .hidden {
   display: none;
   visibility: hidden;
 }
 
+#game-container {
+  grid-area: 2 / 2 / 3 / 3;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
 #question {
   background-color: rgb(74, 226, 180);
-  width: 50vw;
-  height: 50vh;
+  grid-area: 1 / 1 / 4 / 6;
 }
 
 #hint {
   background-color: rgb(57, 208, 86);
-  width: 50vw;
-  height: 20vh;
+  grid-area: 4 / 1 / 5 / 6;
 }
 
 .show {
   display: block;
 }
 
-#image-left, #image-right {
-  width: 20vw;
-  height: 30vh;
-  padding: 20px;
-  display: inline-block;
+#image-right {
+  grid-area: 2 / 2 / 3 / 3;
+  object-fit: cover;
+  max-width: 20vw;
+
+}
+#image-left {
+  grid-area: 2 / 2 / 4 / 5;
+  object-fit: cover;
+  max-width: 20vw;
+
 }
 
 #pop-up-box{
+  grid-area: 2 / 2 / 3 / 3;
   background-color: rgb(41, 196, 192);
-  width: 50vw;
-  height: 50vh;
   font-size: 2em;
-  position: absolute;
-  padding-bottom: 30px; 
+  padding-bottom: 30px;
+  z-index: 2;
+}
+
+/* BUTTONS */
+
+#finish-button button {
+  grid-area: 3 / 3 / 4 / 4;
 }
