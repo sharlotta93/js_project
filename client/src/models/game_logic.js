@@ -87,7 +87,6 @@ GameLogic.prototype.dealWithAnswers = function () {
 
   PubSub.subscribe("QuestionView:click-guess", (evt) => {
     const answer = evt.detail;
-    console.log(evt.detail);
     if (answer.userAnswer == answer.answer) {
       PubSub.publish("PopUpBox:answer-calculated", {
         correct: true,
