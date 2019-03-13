@@ -21,14 +21,16 @@ PopUpBox.prototype.createPopUpBox = function () {
 PopUpBox.prototype.createButton = function () {
   const popUpBox = document.querySelector('#pop-up-box');
   const button = document.createElement('button');
-  button.textContent = "OK";
+  button.classList.add('styled-button');
+  const span = document.createElement('span');
+  span.textContent = "OK";
+  button.appendChild(span);
   popUpBox.appendChild(button);
   button.focus();
   button.addEventListener('click', (evt) => {
     popUpBox.classList.add('hidden');
   });
   button.addEventListener('keydown', (evt) => {
-      console.log(evt);
       if (evt.key == 'Enter') {
         if (popUpBox.classList.contains('hidden')) return
         popUpBox.classList.add('hidden');

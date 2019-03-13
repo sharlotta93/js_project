@@ -59,3 +59,89 @@ body {
 #finish-button button {
   grid-area: 3 / 3 / 4 / 4;
 }
+
+.styled-button {
+  display: inline-block;
+  margin: 10px;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+  border-radius: 8px;
+  box-shadow: 0 8px 0 #3755c5, 0 15px 20px rgba(0, 0, 0, .35);
+  transition: box-shadow .1s ease-in-out;
+  font-size: 26px;
+  color: #fff;
+}
+
+.styled-button.large {
+  font-size: 50px;
+}
+
+.styled-button.green {
+  box-shadow: 0 8px 0 #217a21, 0 15px 20px rgba(0, 0, 0, .35);
+}
+
+.styled-button.red {
+  box-shadow: 0 8px 0 #7a2020, 0 15px 20px rgba(0, 0, 0, .35);
+}
+
+.styled-button span {
+  display: inline-block;
+  padding: 8px 20px;
+  background: #4e88f4;
+  background: linear-gradient(to bottom, #4e88f4 0%,#2466f4 100%);
+  border-radius: 8px;
+  font-family: 'Oleo Script', Arial, sans-serif;
+  color: #fff;
+  line-height: 1;
+  text-shadow: 0 -1px 1px rgba(49, 59, 175, .7);
+  transition: background-color .2s ease-in-out, transform .1s ease-in-out;
+}
+
+.styled-button.large span {
+  padding: 20px 30px;
+}
+
+.styled-button.green span {
+  background: #4ef450;
+  background: linear-gradient(to bottom, #4ef450 0%,#24f42a 100%);
+  background: #45d153;
+  background: linear-gradient(to bottom, #45d153 0%,#18a522 100%);
+  text-shadow: 0 -1px 1px rgba(49, 175, 51, .7);
+}
+
+.styled-button.red span {
+  background: #f44e4e;
+  background: linear-gradient(to bottom, #f44e4e 0%,#24f42a 100%);
+  background: #d14545;
+  background: linear-gradient(to bottom, #d14545 0%,#a51818 100%);
+  text-shadow: 0 -1px 1px rgba(49, 175, 51, .7);
+}
+
+.styled-button:hover span {
+  background-color: #6a7dec;
+  text-shadow: 0 -1px 1px rgba(49, 59, 175, .9), 0 0 5px rgba(255, 255, 255, .8);
+}
+
+.styled-button.green:hover span {
+  background-color: #6aec70;
+}
+
+.styled-button.red:hover span {
+  background-color: #ec6a6a;
+}
+
+.styled-button:active, .styled-button:focus {
+  box-shadow: 0 8px 0 #3755c5, 0 12px 10px rgba(0, 0, 0, .3);
+}
+.styled-button.green:active, .styled-button.green:focus {
+  box-shadow: 0 8px 0 #217a21, 0 12px 10px rgba(0, 0, 0, .3);
+}
+.styled-button.red:active, .styled-button.red:focus {
+  box-shadow: 0 8px 0 #7a2020, 0 12px 10px rgba(0, 0, 0, .3);
+}
+
+.styled-button:active span {
+  transform: translate(0, 4px);
+}

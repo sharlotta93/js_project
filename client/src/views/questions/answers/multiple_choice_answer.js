@@ -28,8 +28,11 @@ MultipleChoiceView.prototype.createInputForm = function (value1, value2, value3,
   const radioLabel4 = this.createLabel(radioItem4, objTextNode4);
 
   const submitButton = document.createElement('button');
+  submitButton.classList.add('styled-button');
+  const span = document.createElement('span');
+  span.textContent = "Guess";
+  submitButton.appendChild(span);
   submitButton.type = 'submit';
-  submitButton.textContent = 'Guess';
 
   guessForm.appendChild(radioLabel1);
   guessForm.appendChild(radioLabel2);

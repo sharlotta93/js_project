@@ -30,7 +30,10 @@ GameView.prototype.createFeatures = function (item) {
   nextButton.id = 'button-next';
 
   const finishButton = document.createElement('button');
-  finishButton.textContent = "FINISH GAME";
+  finishButton.classList.add('styled-button');
+  const span = document.createElement('span');
+  span.textContent = "FINISH GAME";
+  finishButton.appendChild(span);
   finishButton.value = item._id;
   finishButton.id = "finish-button";
   finishButton.addEventListener('click', (evt) => {
