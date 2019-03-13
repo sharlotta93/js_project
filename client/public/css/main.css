@@ -77,7 +77,33 @@ h3 {
   padding-bottom: 30px;
   z-index: 2;
 }
+/* INPUT BOX */
+input[type="number"] {
+  padding: 5px 10px;
+  font-size: 1em;
+  border-radius: 10px;
+}
 
+/* RADIO BUTTONS */
+label {
+  background-color: rgb(60, 232, 217);
+  display: block;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 2px solid;
+  margin-bottom: 5px;
+  cursor: pointer;
+  max-width: 21vw;
+  text-align: left;
+}
+form#radioDiv {
+  font-size: 1.4em;
+  margin-left: 25vw;
+}
+
+input[type="radio"] {
+  padding-right: 20px;
+}
 /* BUTTONS */
 
 button {
