@@ -17,12 +17,13 @@ PopUpBox.prototype.createPopUpBox = function () {
       popUpBox.textContent = "You are Correct! YAY!";
       popUpBox.appendChild(image);
     } else {
-      // popUpBox.textContent =  "Remember you can always check the hint!";
+      //popUpBox.textContent =  "Remember you can always check the hint!";
       popUpBox.appendChild(image2);
     }
     this.createButton(isCorrect, isLastQuestion);
   });
 };
+
 PopUpBox.prototype.createImage = function (url) {
   const image = document.createElement('img');
   image.src = url;
