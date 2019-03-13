@@ -17,7 +17,7 @@ PopUpBox.prototype.createPopUpBox = function () {
       popUpBox.textContent = "You are Correct! YAY!";
       popUpBox.appendChild(image);
     } else {
-      //popUpBox.textContent =  "Remember you can always check the hint!";
+      popUpBox.textContent =  "";
       popUpBox.appendChild(image2);
     }
     this.createButton(isCorrect, isLastQuestion);
