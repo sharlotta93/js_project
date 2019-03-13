@@ -1,10 +1,16 @@
 body {
+  background-image: linear-gradient( rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3) ), url("../images/background.jpg");
+  background-size: cover;
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
   grid-template-rows: 1fr 4fr 2fr;
   height: 100vh;
   width: 100vw;
   text-align: center;
+}
+
+img {
+  width: 100vw;
 }
 
 p {
@@ -144,7 +150,7 @@ button {
 button#button-next, button#button-previous {
   border: none;
   font-size: 2.5em;
-  color: rgb(92, 186, 105);
+  color: black;
 }
 
 #finish-button {
