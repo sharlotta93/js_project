@@ -1,33 +1,31 @@
 const PubSub = require("../helpers/pub_sub.js");
 
 const PopUpBox = function () {
-  this.lastQuestion = false;
 }
 
 PopUpBox.prototype.createPopUpBox = function () {
-  PubSub.subscribe('PopUpBox:last-question', () => {
-    this.lastQuestion = true;
-  })
   const popUpBox = document.querySelector('#pop-up-box');
   PubSub.subscribe("PopUpBox:answer-calculated", (evt) => {
+    const isCorrect = evt.detail.correct;
+    const isLastQuestion = evt.detail.isLastQuestion;
     popUpBox.classList.remove('hidden');
-    if (evt.detail) {
+    if (evt.detail.correct) {
       popUpBox.textContent = "You are Correct! YAY!";
-      this.createButton();
     } else {
       popUpBox.textContent =  "Try Again! Remember you can always check the hint!";
-      this.createButton();
     }
+    this.createButton(isCorrect, isLastQuestion);
   });
 };
 
-PopUpBox.prototype.createButton = function () {
+PopUpBox.prototype.createButton = function (isCorrect, isLastQuestion) {
   const popUpBox = document.querySelector('#pop-up-box');
   const button = document.createElement('button');
   button.textContent = "OK";
   popUpBox.appendChild(button);
-  if (this.lastQuestion) {
+  if (isLastQuestion && isCorrect) {
     button.addEventListener('click', (evt) => {
+      popUpBox.classList.add('hidden')
       PubSub.publish("FinalView:display", evt)
     });
   } else {
@@ -36,5 +34,6 @@ PopUpBox.prototype.createButton = function () {
     });
   }
 };
+
 
 module.exports = PopUpBox;

@@ -3,9 +3,13 @@ const PubSub = require('../helpers/pub_sub.js');
 const GameView = require('../views/game.js');
 
 const GameLogic = function () {
-  this.currentQuestionIndex = 7;
+  this.currentQuestionIndex = 0;
   this.questions = [];
   this.request = new RequestHelper('http://localhost:3000/api/game');
+}
+
+GameLogic.prototype.isLastQuestion = function() {
+  return this.currentQuestionIndex === this.questions.length - 1;
 }
 
 GameLogic.prototype.bindEvents = function () {
@@ -50,7 +54,6 @@ GameLogic.prototype.publishCurrentQuestion = function () {
 GameLogic.prototype.previousQuestion = function () {
   this.currentQuestionIndex -= 1;
   this.publishCurrentQuestion();
-
   if (this.currentQuestionIndex > 0) {
     const previousButton = document.querySelector('#button-previous');
     previousButton.classList.remove('hidden');
@@ -60,12 +63,11 @@ GameLogic.prototype.previousQuestion = function () {
 GameLogic.prototype.nextQuestion = function () {
   this.currentQuestionIndex += 1;
   this.publishCurrentQuestion();
-
-  if (this.currentQuestionIndex === this.questions.length - 1) {
-    PubSub.publish("PopUpBox:last-question");
+  if (this.isLastQuestion()) {
     const nextButton = document.querySelector('#button-next');
     nextButton.classList.add('hidden');
   }
+
   const previousButton = document.querySelector('#button-previous');
   previousButton.classList.remove('hidden');
 };
@@ -77,10 +79,16 @@ GameLogic.prototype.dealWithAnswers = function () {
     const answer = evt.detail;
     console.log(evt.detail);
     if (answer.userAnswer == answer.answer) {
-      PubSub.publish("PopUpBox:answer-calculated", true);
+      PubSub.publish("PopUpBox:answer-calculated", {
+        correct: true,
+        isLastQuestion: this.isLastQuestion()
+      });
       this.nextQuestion();
     } else {
-      PubSub.publish("PopUpBox:answer-calculated", false);
+      PubSub.publish("PopUpBox:answer-calculated", {
+        correct: false,
+        isLastQuestion: this.isLastQuestion()
+      });
     }
   });
 };
