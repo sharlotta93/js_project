@@ -21,11 +21,8 @@ PopUpBox.prototype.createPopUpBox = function () {
 PopUpBox.prototype.createButton = function (isCorrect, isLastQuestion) {
   const popUpBox = document.querySelector('#pop-up-box');
   const button = document.createElement('button');
-  const span = document.createElement('span');
   button.classList.add('ok-button');
-  button.classList.add('styled-button');
-  span.textContent = "OK";
-  button.appendChild(span);
+  button.textContent = "OK";
   popUpBox.appendChild(button);
   button.focus();
   if (isLastQuestion && isCorrect) {
