@@ -49,7 +49,7 @@ Countries.prototype.createQuestionObject = function (countries) {
       _id: (questionObject1.id + questionObject2.id),
       answerType: "picture",
       genre: "Geography",
-      question: `Which of these is the flag of ${questionObject1.name}?`,
+      question: `Click on the flag of ${questionObject1.name}!`,
       image1: questionObject2.flag,
       image2: questionObject1.flag,
       answer: "image-right",

@@ -108,6 +108,7 @@ p.hint-text {
   object-fit: contain;
   width: 27vw;
   height: 20vh;
+  cursor: pointer;
 }
 
 #image-right {
@@ -115,6 +116,7 @@ p.hint-text {
   object-fit: contain;
   width: 27vw;
   height: 20vh;
+  cursor: pointer;
 }
 
 #pop-up-box{
