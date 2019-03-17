@@ -1,6 +1,6 @@
-# Name
+# Educational Game
 
-Name is a full stack JavaScript application with an Express server and MongoDB database.
+Educational Game is a full stack JavaScript application with an Express server and MongoDB database.
 
 ## Getting Started
 
@@ -38,6 +38,9 @@ Run express:
 npm run server:dev
 ```
 
-### Using
+#### Using
 
 The application is running on port 300 so visit http://localhost:3000.
+
+
+##### Images of the app  

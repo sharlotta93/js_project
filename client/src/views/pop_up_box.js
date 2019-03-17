@@ -7,7 +7,6 @@ PopUpBox.prototype.createPopUpBox = function () {
   const popUpBox = document.querySelector('#pop-up-box');
   const image = this.createImage("https://media1.giphy.com/media/3o7WIJufZnyG3LE2Ws/source.gif");
   const image2 = this.createImage("https://i.kym-cdn.com/photos/images/original/000/698/198/cc0.gif");
-  //"https://i.kym-cdn.com/photos/images/original/001/173/316/86f.gif"
 
   PubSub.subscribe("PopUpBox:answer-calculated", (evt) => {
     const isCorrect = evt.detail.correct;
